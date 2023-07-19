@@ -28,7 +28,24 @@ links: {
     goat: String,
     flightClub: String,
     stadiumGoods: String
-}
+},
+user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  upvotes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  downvotes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 
 })
 

@@ -50,6 +50,9 @@ export interface Sneakers {
 
 }
 export interface Kobe  {
+    _id: string;
+    
+    thumbnail: string | undefined;
     id: string,
     sku: string,
     brand: string,
@@ -59,8 +62,8 @@ export interface Kobe  {
     silhouette: string,
     releaseYear: string,
     releaseDate: string,
-    retailPrice: Number,
-    estimatedMarketValue: Number,
+    retailPrice: number,
+    estimatedMarketValue: number,
     story: String,
     image:{
         original: string,
@@ -74,8 +77,9 @@ export interface Kobe  {
         flightClub: string,
         stadiumGoods: string
     },
-    kobeSneakers: {}[],
-    
+    comments: {}[]
+    getComments: (sneakerId: string) => void
+   
 }
 
 export interface Inputs  {
@@ -92,9 +96,7 @@ export type  UserContextType = {
     login: (credentials: Inputs) => void;
     resetAuthErr: () => void,
     errMsg: string,
-    addComment: (info: string) => void,
-    getComments: () => void,
-    deleteComment: (commentId: string) => void,
+    getComments: (sneakerId: string) => void,
     comments: Array<Comments>
     logout: () => void,
     token: string,
@@ -102,6 +104,7 @@ export type  UserContextType = {
     getPopularSneakers: () => void ,
     getKobeSneakers: () => void,
     kobeSneakers: Array<Kobe>
+    
 
     
    
@@ -110,17 +113,24 @@ export type  UserContextType = {
 export type CommentContextType = {
     commentInput: {
         username: string,
-        UserComment: string
+        comment: string
     };
+    handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
     handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
-    handleSubmit: (info: string) => void;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>, info: string) => void;
     handleDelete: (commentId: string) => void,
+    addComment: (sneakerId: string, info: string, ) => void,
+    comments: Array<Comments>,
+    getComments: (sneakerId: string) => void
+    sneakerId: string
+    _id: string 
 
 }
 
 export interface Comments {
-    
+    _id: string;
     username: string;
     comment: string;
-    _id: string
+    timestamp: string;
+    sneakerId: string;
 }[]

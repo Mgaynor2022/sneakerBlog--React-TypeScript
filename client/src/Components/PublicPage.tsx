@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext} from "../Context/UserProvider";
 import { UserContextType, CommentContextType } from "./Types"
-import SneakerCard from "./SneakerCard";
-import PopularSneakersCard from "./PopularSneakersCard";
+import PopularSneakersCard from "../oldCode/PopularSneakersCard";
 import { CommentsContext } from "../Context/CommentsProvider";
 
 const PublicPage: React.FC = () => {
 
     useEffect(() => {
-        getComments(),
+        // getComments(),
         getPublicSneakers()
         getPopularSneakers()
         // getKobeSneakers()
@@ -41,10 +40,9 @@ const PublicPage: React.FC = () => {
                 <div id="slide-tracker" className="cursor-pointer flex justify-between animate-marquee-infinite ">
                   <PopularSneakersCard
                     {...trend}
-                    addComment = {addComment}
-                    getComments = {getComments}
+                    // addComment = {addComment}
+                    // getComments = {getComments}
                     deleteComment = {deleteComment}
-                    commentInput = {commentInput}
                     handleChange = {handleChange}
                   />
                 </div>

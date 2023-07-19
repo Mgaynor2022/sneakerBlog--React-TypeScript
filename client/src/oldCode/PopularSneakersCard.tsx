@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react'
 import {LiaComments} from 'react-icons/lia'
 import {AiOutlineDislike, AiOutlineLike} from 'react-icons/ai'
-import { Sneakers } from './Types'
+import { Sneakers } from '../Components/Types'
 
 
 const PopularSneakersCard = (props:Sneakers): any => {
@@ -13,8 +13,6 @@ const PopularSneakersCard = (props:Sneakers): any => {
         release_date,
         brand,
         category,
-        handleChange,
-        commentInput,
         description,
         price
     } = props

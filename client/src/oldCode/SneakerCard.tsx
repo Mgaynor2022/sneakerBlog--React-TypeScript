@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Sneakers } from './Types'
+import { Sneakers } from '../Components/Types'
 
 
 

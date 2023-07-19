@@ -1,17 +1,33 @@
 import React, { createContext, useContext, useState } from "react";
 import { CommentContextType, Comments } from "../Components/Types";
 import { UserContext } from "./UserProvider";
+import axios from "axios"
+
 
 const CommentDefault: CommentContextType = {
-   handleChange: () => {},
-   commentInput: {
-    username: '',
-    UserComment: ''
-   },
-   handleSubmit: () => {},
-   handleDelete: () => {}
+    handleChange: () => { },
+    commentInput: {
+        username: '',
+        comment: ''
+    },
+    handleTextArea: () => { },
+    handleSubmit: () => { },
+    handleDelete: () => { },
+    addComment: () => { },
+    getComments: () => { },
+    comments: [],
+     sneakerId: "" ,
+     _id: ''
 }
 export const CommentsContext = createContext(CommentDefault)
+
+const userAxios = axios.create()
+
+userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem("token")
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 
 
 type ContextProviderProps = {
@@ -19,48 +35,79 @@ type ContextProviderProps = {
 }
 
 const CommentsProvider = ({children} : ContextProviderProps) => {
-
-    const {
-        addComment,
-        deleteComment,
-        getComments,
-        comments
-        
-    } = useContext(UserContext)
+    
+    const [comments, setComments] = useState<Comments[]>([]);
 
     const [commentInput, setCommentInput] = useState({
         username: '',
-        UserComment: ''
+        comment: ''
     })
 
-    // const handleChange = (e: React.ChangeEvent <HTMLInputElement>) => {
-    //     setCommentInput({
-    //         ...commentInput,
-    //         [e.target.name] : [e.target.value]
-    // })
-    // }
+    const getComments = (sneakerId: string) => {
+        const url: string = `/local/api/userComment/${sneakerId}`
+        userAxios.get(url)
+        .then(res => setComments(res.data))
+        .catch(err => console.log(err))
+        
+    }
+
+   
     const handleChange = (e: React.ChangeEvent <HTMLInputElement>) => {
         setCommentInput((prevInput) =>({
             ...prevInput,
             [e.target.name] : e.target.value
         }))
     }
-    // Submits the comment to the Comment APi 
-    const handleSubmit = (info: string) => {
-        addComment(info)
+    const handleTextArea = (e:React.ChangeEvent<HTMLTextAreaElement>)=> {
+        setCommentInput((prevInput) =>({
+            ...prevInput,
+            [e.target.name] : e.target.value
+        }))
+    }
+
+
+ 
+
+    const addComment = (sneakerId: string, info: string): void => {
+        const url: string = `/local/api/userComment/${sneakerId}`
+        userAxios.post(url, info)
+        .then(res => setComments(res.data))
+        .catch(err => console.log(err))
+    }
+
+    // const deleteComment = (commentId: string): void => {
+    //     const url: string = `/local/api/userComment/${commentId}`;
+    //     userAxios.delete(url, { data: commentId })
+    //         .then(res => {
+        
+    //         setComments(prev => prev.filter(data => data._id !== commentId));
+    //         });
+    //     };
+
+
+    // // Submits the comment to the Comment APi 
+    // const handleSubmit = (e: React.FormEvent<HTMLFormElement> ,sneakerId: string, info: string): void => {
+    //     e.preventDefault()
+    //     addComment(sneakerId, info)
        
-    }
-    const handleDelete = (commentId :string): void => {
-        deleteComment(commentId)
-    }
+    // }
+    // const handleDelete = (commentId :string): void => {
+    //     deleteComment(commentId)
+    // }
 
     return (
         <CommentsContext.Provider
             value={{
                 commentInput,
+                // setCommentInput,
                 handleChange,
-                handleSubmit,
-                handleDelete
+                // handleSubmit,
+                // handleDelete,
+                handleTextArea,
+                addComment,
+                getComments,
+                comments,
+                
             }}> 
             {children}
         </CommentsContext.Provider>

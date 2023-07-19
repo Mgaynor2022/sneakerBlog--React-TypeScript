@@ -12,7 +12,7 @@ import JordanSidebar from './Components/JordanSidebar'
 import ContentDisplay from './Components/ContentDisplay'
 
 function App() {
-const {token, logout, kobeSneakers} =  useContext(UserContext)
+const {token, logout, kobeSneakers, comments} =  useContext(UserContext)
   return (
     
     <div id='container'>
@@ -33,8 +33,14 @@ const {token, logout, kobeSneakers} =  useContext(UserContext)
             <ContentDisplay />
       <footer>Footer</footer>
           </PrivateRoute>}>
+          {/* <Route path="/SidebarPage" element={<SidebarPage {...kobeSneakers} />}/> */}
         </Route>
-          <Route path="/SidebarPage" element={<SidebarPage {...kobeSneakers} />}/>j
+
+        <Route path='/SidebarPage'
+            element={<PrivateRoute token={token} redirectTo="/" >
+            <SidebarPage  {...kobeSneakers} {...comments}/>
+          </PrivateRoute>}>
+        </Route>
           
       </Routes>
     </div>

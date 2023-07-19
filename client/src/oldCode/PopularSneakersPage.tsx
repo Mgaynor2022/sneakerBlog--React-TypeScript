@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext} from "../Context/UserProvider";
-import { UserContextType, CommentContextType, Sneakers } from "./Types"
+import { UserContextType, CommentContextType, Sneakers } from "../Components/Types"
 import { CommentsContext } from "../Context/CommentsProvider";
 import PopularSneakersCard from "./PopularSneakersCard";
 

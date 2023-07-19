@@ -1,26 +1,62 @@
-import React from "react";
 import { Kobe } from "./Types";
-import PopularSneakersCard from "./PopularSneakersCard";
+import React, { useContext, useState } from "react";
 
+import Card from "./Card";
+import { CommentsContext } from "../Context/CommentsProvider";
+import { CommentContextType } from "./Types";
+import CommentForm from "./CommentForm"
+import CommentDisplay from "./CommentDisplay";
 
 
 const KobeSneakerContent = (props: Kobe):any => {
 
     const {
-        kobeSneakers,
+        brand,
+        releaseDate,
+        name,
+        story,
+        retailPrice,
         image:{
-            original,
-            small,
             thumbnail
-        }
+        },
+        _id
+        
     } = props
 
+    const {
+        getComments,
+        comments
+        
+      } = useContext<CommentContextType>(CommentsContext)
+
+      const [viewComment, setViewComment] = useState(false)
+
+      const toggleCard = () => {
+          setViewComment(prevView => !prevView)
+          getComments(_id)
+  
+      }
+
     return (
-        <div className="mx-auto max-w-xs overflow-hidden rounded-lg bg-white shadow">
-            
-            <img className=" w-full object-cover" src={thumbnail}/>
+        <>
+            <Card
+                
+                thumbnail={thumbnail}
+                brand={brand}
+                releaseDate={releaseDate}
+                name={name}
+                story={story}
+                retailPrice={retailPrice}
+                {...comments}
+                getComments={getComments}
+                sneakerId={_id}
+            />
+
+
+       
+             
            
-        </div>
+        </>
     )
 
 }

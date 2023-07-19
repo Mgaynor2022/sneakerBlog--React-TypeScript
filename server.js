@@ -16,7 +16,7 @@ app.use(cors({
 app.use("/local/auth", require("./routes/AuthRouter.jsx"))
 app.use('/api', jwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
 app.use("/local/api/publicSneakers", require("./routes/PublicSneakersRouter.jsx"))
-app.use("/local/api/userComments",require("./routes/UserCommentRouter.jsx"))
+app.use("/local/api/userComment",require("./routes/UserCommentRouter.jsx"))
 app.use("/local/api/popularSneakers", require("./routes/PopularSneakersRouter.jsx"))
 app.use("/local/api/kobeSneakers", require("./routes/KobeSneakersRouter.jsx"))
 // app.use("api/UserSneakers", require("./routes/UserSneakers.jsx"))

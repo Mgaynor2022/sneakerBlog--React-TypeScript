@@ -52,7 +52,8 @@
   grid-area: space1;
 }
 #KobeItems{
-  grid-area:  main;
+  grid-area: main;
+  place-items: left;
 }
 
 #sidebar {
