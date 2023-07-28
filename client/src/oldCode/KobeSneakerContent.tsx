@@ -1,11 +1,11 @@
-import { Kobe } from "./Types";
+import { Kobe } from "../Types/Types";
 import React, { useContext, useState } from "react";
 
-import Card from "./Card";
+import Card from "../Components/Card";
 import { CommentsContext } from "../Context/CommentsProvider";
-import { CommentContextType } from "./Types";
-import CommentForm from "./CommentForm"
-import CommentDisplay from "./CommentDisplay";
+import { CommentContextType } from "../Types/Types";
+import CommentForm from "../Components/Comments/CommentForm"
+import CommentDisplay from "../Components/Comments/CommentDisplay";
 
 
 const KobeSneakerContent = (props: Kobe):any => {

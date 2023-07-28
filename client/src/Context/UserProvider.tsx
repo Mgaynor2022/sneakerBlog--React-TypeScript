@@ -1,7 +1,8 @@
 import React, {useState, useEffect,  createContext} from "react"
 import axios from "axios"
-import { UserContextType } from "../Components/Types"
-import { Inputs, Sneakers, Comments, Kobe } from "../Components/Types"
+import { useNavigate } from 'react-router-dom'
+import { UserContextType } from "../Types/Types"
+import { Inputs, Sneakers, Comments, Kobe } from "../Types/Types"
 
 const ContextDefault: UserContextType = {
     getPublicSneakers: () => {},
@@ -10,15 +11,17 @@ const ContextDefault: UserContextType = {
     login: () => {},
     resetAuthErr: () => {},
     errMsg: '',
-    getComments: () => {},
     comments: [],
     logout: () => {},
     token: '',
     popularSneakers: [],
     getPopularSneakers: () => {},
     getKobeSneakers: () => {},
-    kobeSneakers: []
-    
+    kobeSneakers: [],
+    likeKobeSneaker: () => {},
+    dislikeKobeSneaker: () => {},
+    backButton: () => {}
+   
 }
 
 type ContextProviderProps = {
@@ -36,14 +39,7 @@ userAxios.interceptors.request.use(config => {
 })
 
 export default function UserProvider ({children} : ContextProviderProps) {
-    // type InitState =  {
-    //     user: string;
-    //     token: string;
-    //     sneakers: {}[]
-    //     comments: {}[]
-    //     errMsg: string
-
-    // }
+   
 
 const user: string = localStorage.getItem("user") || "{}";
 const parsedUser: any = JSON.parse(user);
@@ -121,6 +117,12 @@ function resetAuthErr(){
         }))
     }
 
+    const navigate = useNavigate()
+
+    const backButton = () => {
+        navigate("/PublicPage", {replace: true})
+    }
+
     // State for all of the sneakers 
     const [allSneakers, setAllSneakers] = useState<Sneakers[]>([])
     
@@ -128,7 +130,7 @@ function resetAuthErr(){
         const url: string = "/local/api/publicSneakers"
         userAxios.get(url)
         .then(res => setAllSneakers(res.data))
-        .catch(err => console.log(err))
+        .catch((err) => handleAuthErr(err.response.data.errMsg))
     }
 
     // State and functions for Popular sneakers 
@@ -138,7 +140,33 @@ function resetAuthErr(){
         const url: string = "/local/api/popularSneakers"
         userAxios.get(url)
         .then(res => setPopularSneakers(res.data))
-        .catch(err => console.log(err))
+        .catch((err) => handleAuthErr(err.response.data.errMsg))
+    }
+
+    const likePopularSneakers = (sneakerId: string) => {
+        const url: string = `/local/api/popularSneakers/likes/${sneakerId}`
+        userAxios
+        .put(url)
+        .then((res) => {
+            setPopularSneakers((prevState) =>
+              prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+            );
+          })
+          .then(() => getPopularSneakers())
+          .catch((err) => console.log(err));
+    }
+
+    const dislikePopularSneakers = (sneakerId: string) => {
+        const url: string = `/local/api/popularSneakers/dislikes/${sneakerId}`
+        userAxios
+        .put(url)
+        .then((res) => {
+            setPopularSneakers((prevState) =>
+              prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+            );
+          })
+          .then(() => getPopularSneakers())
+          .catch((err) => console.log(err));
     }
 
     // Comments
@@ -148,27 +176,6 @@ function resetAuthErr(){
         }
         const [comments, setComments] = useState<Comments>();
     
-    // const [comments, setComments] = useState([])
-  
-
-    // const getComments = (sneakerId: string) => {
-    //     const url: string = `/local/api/userComment/${sneakerId}`
-    //     userAxios.get(url)
-    //     .then(res => setComments(res.data))
-    //     .catch(err => console.log(err))
-    //     .catch((err) => handleAuthErr(err.response.data.errMsg));
-    // }
-  
-    // const getComments = (sneakerId: string): void => {
-    //     const url: string = `/local/api/userComment/${sneakerId}`
-    //     userAxios.get(url)
-    //     .then((res) => {
-    //         setComments((prevComments) => [...prevComments, ...res.data]);
-    //       })
-    //     .catch(err => console.log(err))
-    //     .catch((err) => handleAuthErr(err.response.data.errMsg));
-    // }
-
     // const addComment = (sneakerId: string, info: string): void => {
     //     const url: string = `/local/api/userComment/${sneakerId}`
     //     userAxios.post(url, info)
@@ -197,7 +204,7 @@ function resetAuthErr(){
         }
 
     const likeKobeSneaker = (sneakerId: string) => {
-        const url: string = `/local/api/likes/${sneakerId}`;
+        const url: string = `/local/api/KobeSneakers/like/${sneakerId}`;
         userAxios
           .put(url)
           .then((res) => {
@@ -210,7 +217,7 @@ function resetAuthErr(){
       };
 
       const dislikeKobeSneaker = (sneakerId: string) => {
-        const url: string = `/local/api/dislikes/${sneakerId}`;
+        const url: string = `/local/api/kobeSneakers/dislike/${sneakerId}`;
         userAxios
           .put(url)
           .then((res) => {
@@ -235,12 +242,15 @@ function resetAuthErr(){
                 resetAuthErr,
                 getPublicSneakers,
                 allSneakers, 
-                // getComments,
                 ...comments,
                 popularSneakers,
                 getPopularSneakers,
                 getKobeSneakers,
-                kobeSneakers
+                kobeSneakers,
+                likeKobeSneaker,
+                dislikeKobeSneaker,
+                backButton
+               
                 
                 
                 

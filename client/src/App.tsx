@@ -10,9 +10,11 @@ import Navbar from './Components/Navbar'
 import PrivateRoute from './Components/PrivateRoute'
 import JordanSidebar from './Components/JordanSidebar'
 import ContentDisplay from './Components/ContentDisplay'
+import PopularSneakersPage from './Components/PopularSneakersPage'
+import NikePage from './Components/NikePage'
 
 function App() {
-const {token, logout, kobeSneakers, comments} =  useContext(UserContext)
+const {token, logout, popularSneakers } =  useContext(UserContext)
   return (
     
     <div id='container'>
@@ -38,9 +40,27 @@ const {token, logout, kobeSneakers, comments} =  useContext(UserContext)
 
         <Route path='/SidebarPage'
             element={<PrivateRoute token={token} redirectTo="/" >
-            <SidebarPage  {...kobeSneakers} {...comments}/>
+            <SidebarPage/>
           </PrivateRoute>}>
         </Route>
+        
+          <Route path='/PopularSneakersCard/brands/:click'
+            element={<PrivateRoute token={token}  redirectTo="/" >
+            <NikePage/>
+          </PrivateRoute>}>
+        </Route>
+        <Route path='/PopularSneakersCard/:id'
+            element={<PrivateRoute token={token}  redirectTo="/" >
+            <PopularSneakersPage />
+          </PrivateRoute>}>
+        </Route>
+
+
+        {/* <Route path='/PopularSneakersCard/jordan'
+            element={<PrivateRoute token={token}  redirectTo="/" >
+            <NikePage/>
+          </PrivateRoute>}>
+        </Route> */}
           
       </Routes>
     </div>

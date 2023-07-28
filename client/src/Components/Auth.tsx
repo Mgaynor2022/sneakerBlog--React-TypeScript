@@ -4,8 +4,6 @@ import AuthForm from "./AuthForm";
 import { TagCloud, TagCloudOptions } from "@frank-mayer/react-tag-cloud"
 
 
-
-
  const Auth: React.FC = () => {
 
     const { login,

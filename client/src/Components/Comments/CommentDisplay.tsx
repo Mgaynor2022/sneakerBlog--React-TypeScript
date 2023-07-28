@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { CommentsContext } from "../Context/CommentsProvider";
-import { Comments } from "./Types";
-import { CommentContextType } from "./Types";
+import { CommentsContext } from "../../Context/CommentsProvider";
+import { Comments } from "../../Types/Types";
+import { CommentContextType } from "../../Types/Types";
 import Comment from "./Comment";
 
 

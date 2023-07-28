@@ -1,21 +1,17 @@
-import React, { useContext } from "react";
-import { CommentContextType, Comments } from "./Types";
-import CommentDisplay from "./CommentDisplay";
-import { CommentsContext } from "../Context/CommentsProvider";
+import React from "react";
+import { Comments } from "../../Types/Types";
 
 
+const CommentForm: React.FC = (props: Comments) => {
 
-
-const CommentForm: React.FC = () => {
-
-    const { 
+ const   {
         commentInput,
-        handleChange,
         handleTextArea,
+        handleChange,
         handleSubmit,
-        addComment,
-        sneakerId
-      } = useContext<CommentContextType>(CommentsContext)
+        handleDelete
+
+    } = props
 
    return (
     <>

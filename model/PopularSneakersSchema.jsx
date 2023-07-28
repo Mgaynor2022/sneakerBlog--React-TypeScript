@@ -24,7 +24,8 @@ const PopularSneakersSchema = new Schema ({
     timestamp: {
         type: Date,
         default: Date.now,
-      }
+      },
+     
 })
 
 module.exports = mongoose.model("PopularSneakers", PopularSneakersSchema)

@@ -5,15 +5,16 @@ import App from './App.tsx'
 import './App.css'
 import UserProvider from './Context/UserProvider.js'
 import CommentsProvider from './Context/CommentsProvider.js'
+import SneakerProvider from './Context/SneakerProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <React.StrictMode>
       <UserProvider>
         <CommentsProvider>
-          
-          <App />
-
+          <SneakerProvider>
+            <App />
+          </SneakerProvider>
         </CommentsProvider>
       </UserProvider>
     </React.StrictMode>,

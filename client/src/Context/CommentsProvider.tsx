@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { CommentContextType, Comments } from "../Components/Types";
-import { UserContext } from "./UserProvider";
+import { CommentContextType, Comments } from "../Types/Types";
 import axios from "axios"
 
 
@@ -17,7 +16,10 @@ const CommentDefault: CommentContextType = {
     getComments: () => { },
     comments: [],
      sneakerId: "" ,
-     _id: ''
+     _id: '',
+     commentButton: () => {},
+     currentId:''
+
 }
 export const CommentsContext = createContext(CommentDefault)
 
@@ -43,6 +45,15 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         comment: ''
     })
 
+    const [currentId, setCurrentId] = useState<string | null>(null)
+
+    const commentButton = (sneakerId: string) => {
+        setCurrentId(
+          currentId === sneakerId ? null : sneakerId
+        )
+       }
+
+
     const getComments = (sneakerId: string) => {
         const url: string = `/local/api/userComment/${sneakerId}`
         userAxios.get(url)
@@ -51,7 +62,6 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         
     }
 
-   
     const handleChange = (e: React.ChangeEvent <HTMLInputElement>) => {
         setCommentInput((prevInput) =>({
             ...prevInput,
@@ -65,8 +75,6 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         }))
     }
 
-
- 
 
     const addComment = (sneakerId: string, info: string): void => {
         const url: string = `/local/api/userComment/${sneakerId}`
@@ -107,6 +115,8 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
                 addComment,
                 getComments,
                 comments,
+                commentButton,
+                currentId
                 
             }}> 
             {children}

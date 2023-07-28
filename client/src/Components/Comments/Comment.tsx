@@ -1,4 +1,4 @@
-import { Comments } from "./Types";
+import { Comments } from "../../Types/Types";
 import moment from "moment";
 
 const Comment = (props:Comments) => {

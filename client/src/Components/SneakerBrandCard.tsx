@@ -1,19 +1,21 @@
 import React from "react";
-import { BrandLink } from "./Types";
+import { BrandLink } from "../Types/Types";
 import { Link } from 'react-router-dom'
 
 
 const SneakerBrandCard = (props: BrandLink) => {
 
+    const {image, header} = props
+
     return (
 
-        <div className="wrapper ">
+        <div className="wrapper">
         <div className="card ">
             <div className="poster">
-                <img src={props.image} alt="Location Unknown"/>
+                <img src={image} alt="Location Unknown"/>
             </div>
             <div className="details  text-center">
-                <h1> {props.header}</h1>
+                <h1> {header}</h1>
                 {/* <h2>2021 • PG • 1hr 38min</h2> */}
                 {/* <div className="rating">
                     <i className="fas fa-star"></i>

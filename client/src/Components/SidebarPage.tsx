@@ -1,22 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CommentsContext } from "../Context/CommentsProvider";
 import { UserContext} from "../Context/UserProvider";
-import { UserContextType, CommentContextType, Kobe } from "./Types"
-import KobeSneakerContent from "./KobeSneakerContent";
-import { Comments } from "./Types";
-import CommentDisplay from "./CommentDisplay";
+import { UserContextType, CommentContextType} from "../Types/Types"
+import CommentDisplay from "./Comments/CommentDisplay";
 import Card from "./Card";
-import CommentForm from "./CommentForm";
+import CommentForm from "./Comments/CommentForm";
+import { MdOutlineArrowBack } from 'react-icons/md'
 
 
-const SidebarPage = (props:Kobe): any => {
+const SidebarPage: React.FC = (): any => {
 
     const {
         kobeSneakers,
         getKobeSneakers,
-        // ...comments
-    } = useContext<UserContextType>(UserContext)
+        likeKobeSneaker,
+        dislikeKobeSneaker,
+        backButton
 
+    } = useContext<UserContextType>(UserContext)
    
       const {
         comments,
@@ -25,64 +26,43 @@ const SidebarPage = (props:Kobe): any => {
         handleTextArea,
         handleSubmit,
         addComment,
-        getComments
+        getComments,
+        currentId,
+        commentButton
       } = useContext<CommentContextType>(CommentsContext)
 
-      const [currentKobeId, setCurrentKobeId] = useState<string | null>(null)
       const [showComment, setShowComment] = useState(false)
 
 
     useEffect(() => {
         getKobeSneakers()
-    
-    }, [])
-
-    console.log(currentKobeId)
-    // if there is an Id show the comments if not dont show comments 
-    useEffect(() => {
-        if (currentKobeId) {
-          getComments(currentKobeId);
+        if(currentId){
+          getComments(currentId);
           setShowComment(true);
         } else {
           setShowComment(false);
-        }
-      }, [currentKobeId]);
 
+        }
+    }, [currentId])
 
     return (
         <div id="KobeItems" className="" >
+            <MdOutlineArrowBack className="" onClick= {backButton} size='1.5rem' />
+
             {kobeSneakers &&
               kobeSneakers.map((kobeSneaker) => (
               <div  key={kobeSneaker._id}>
                 <Card
                  {...kobeSneaker}
-                 currentKobeId = {currentKobeId}
-                 setCurrentKobeId = {setCurrentKobeId}
+                 image={kobeSneaker.image.thumbnail}
+                 likeKobeSneaker = {likeKobeSneaker}
+                 dislikeKobeSneaker = {dislikeKobeSneaker}
+                 backButton = {backButton}
+                 commentButton= {commentButton}
+                 comments = {comments}
                  />
 
-               
-                    <button 
-                    onClick={() =>
-                        setCurrentKobeId(
-                        currentKobeId === kobeSneaker._id ? null : kobeSneaker._id
-                        )
-                    }
-                    >
-                    {currentKobeId === kobeSneaker._id ? (
-                        <span>
-                        <i className='fa-regular fa-comment'></i> Comments{' '}
-                        {comments.length}
-                        </span>
-                    ) : (
-                        <span>
-                        <i className='fa-regular fa-comment'></i> Comment
-                        </span>
-                    )}
-                    </button>
-              
-
-
-            {currentKobeId === kobeSneaker._id && (
+            {currentId === kobeSneaker._id && (
             <>
               <CommentForm
                 commentInput={commentInput}
@@ -95,13 +75,7 @@ const SidebarPage = (props:Kobe): any => {
             </>
           )}
 
-                    {/* <CommentForm
-                        commentInput={commentInput}
-                        handleChange={handleChange}
-                        handleTextArea={handleTextArea}
-                    />
-
-                    <CommentDisplay sneakerId={kobeSneaker._id} /> */}
+    
                 </div>
 
             ))}

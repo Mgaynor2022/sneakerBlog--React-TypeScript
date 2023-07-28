@@ -33,7 +33,7 @@ kobeSneakersRouter.post("/",
         }
 })
 
-kobeSneakersRouter.put("/likes/:sneakerId",
+kobeSneakersRouter.put("/like/:sneakerId",
     expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
      async (req, res, next) => {
         try {

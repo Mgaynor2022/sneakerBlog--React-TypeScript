@@ -14,7 +14,8 @@ export type AuthProps = {
 
   export type BrandLink = {
     image: string,
-    header: string
+    header: string,
+    // handleClick: () => void
   }
  
 export interface Sneakers {
@@ -38,6 +39,8 @@ export interface Sneakers {
     },
     popularSneakers: {}[];
     kobeSneakers: {}[],
+    allSneakers: {}[],
+    _id: string
     id: string,
     colorway: string,
     gender: string,
@@ -47,9 +50,17 @@ export interface Sneakers {
     retailPrice: Number,
     estimatedMarketValue: Number,
     story: String,
+    likes: [],
+    dislikes: []
+    backButton: () => void
+    likeKobeSneaker: (sneakerId: string) => void,
+    dislikeKobeSneaker: (sneakerId: string) => void
+    commentButton: (sneakerId: string) => void
+    comments: Array<Comments>,
 
 }
 export interface Kobe  {
+    
     _id: string;
     
     thumbnail: string | undefined;
@@ -65,7 +76,8 @@ export interface Kobe  {
     retailPrice: number,
     estimatedMarketValue: number,
     story: String,
-    image:{
+    image: string,
+    images:{
         original: string,
         small: string,
         thumbnail: string
@@ -77,9 +89,18 @@ export interface Kobe  {
         flightClub: string,
         stadiumGoods: string
     },
-    comments: {}[]
+    upvotes: []
+    downvotes: []
     getComments: (sneakerId: string) => void
-   
+    likeKobeSneaker: (sneakerId: string) => void,
+    dislikeKobeSneaker: (sneakerId: string) => void
+    // setCurrentKobeId: () => {}
+    // currentKobeId: string | null
+   toggleComments: () => void
+   backButton: () => void
+   commentButton: (sneakerId: string) => void
+   comments: Array<Comments>,
+
 }
 
 export interface Inputs  {
@@ -90,13 +111,11 @@ export interface Inputs  {
 
 export type  UserContextType = {
     getPublicSneakers: () => void;
-    
     allSneakers: Array<Sneakers>;
     signup: (credentials: Inputs) => void;
     login: (credentials: Inputs) => void;
     resetAuthErr: () => void,
     errMsg: string,
-    getComments: (sneakerId: string) => void,
     comments: Array<Comments>
     logout: () => void,
     token: string,
@@ -104,10 +123,27 @@ export type  UserContextType = {
     getPopularSneakers: () => void ,
     getKobeSneakers: () => void,
     kobeSneakers: Array<Kobe>
+    likeKobeSneaker: (sneakerId: string) => void,
+    dislikeKobeSneaker: (sneakerId: string) => void
+    backButton: () => void
     
+}
 
-    
-   
+export type SneakerContextType = {
+    popularSneakers: {}[];
+    kobeSneakers: {}[],
+    allSneakers: {}[],
+    getPublicSneakers: () => void;
+    // allSneakers: Array<Sneakers>;
+    // popularSneakers: Array<Sneakers>,
+    getPopularSneakers: () => void ,
+    getKobeSneakers: () => void,
+    // kobeSneakers: Array<Kobe>
+    likeKobeSneaker: (sneakerId: string) => void,
+    dislikeKobeSneaker: (sneakerId: string) => void,
+    likePopularSneakers: (sneakerId: string) => void,
+    dislikePopularSneakers: (sneakerId: string) => void,
+
 }
 
 export type CommentContextType = {
@@ -124,6 +160,8 @@ export type CommentContextType = {
     getComments: (sneakerId: string) => void
     sneakerId: string
     _id: string 
+    commentButton: (sneakerId: string) => void
+    currentId: string | null
 
 }
 
@@ -133,4 +171,12 @@ export interface Comments {
     comment: string;
     timestamp: string;
     sneakerId: string;
+    handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
+    handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>, info: string) => void;
+    handleDelete: (commentId: string) => void,
+    commentInput: {
+        username: string,
+        comment: string
+    };
 }[]

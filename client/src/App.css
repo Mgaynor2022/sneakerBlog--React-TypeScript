@@ -55,6 +55,9 @@
   grid-area: main;
   place-items: left;
 }
+#nikePage {
+  grid-area: main;
+}
 
 #sidebar {
   grid-area: sidebar1;
@@ -142,6 +145,9 @@ footer {
   grid-area: footer;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
+}
+#sneakersPage{
+  grid-area: main
 }
 
 /* a {
