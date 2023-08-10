@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Work Sans', sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animation-delay-2000{
+    animation-delay: 2s;
+  }
+  .animation-delay-4000{
+    animation-delay: 4s;
+  }
+}
+@media only screen and (min-width: 768px){
+  
+  #container {
+    /* background-color: #000; */
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 0.2fr  2fr 450px 1.2fr 450px 0.8fr; */
+    grid-template-rows: auto auto max-content auto 450px 0.8fr;
+    
+    grid-template-areas:
+    "nav nav nav nav"
+    "space1 trend trend trend"
+    "sidebar1 main main main "
+    "space title title title"
+    "sidebar2 content1 content2 content3"
+    "footer footer footer footer";
+    grid-gap: 10px;
+    text-align: center;
+    ;
+  }
+  #bigNavbar{
+    grid-area: nav;
+  }
+  #mobilNavbar{
+    display: none;
+  }
+  #auth{
+    /* grid-area:main; */
+  grid-column-start: space1;
+  grid-column-end: trend;
+  grid-row-start: 3;
+  grid-row-end: 4;
+ place-items: center;
+}
+
+#about{
+  grid-column-start:  sidebar2 ;
+  grid-column-end: content1;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+#navbar {
+  grid-area: nav;
+ 
+}
+
+#trend{
+  grid-area: trend;
+  place-items: center;
+}
+#space {
+  grid-area: space;
+}
+#space1 {
+  grid-area: space1;
+}
+#KobeItems, #nikePage, #trendItems, #sneakersPage {
+  grid-area: main;
+  
+}
+
+#sidebar {
+  grid-area: sidebar1;
+}
+#title{
+  grid-area: title;
+
+}
+#title3{
+  grid-area: title3;
+  
+}
+#sidebar2 {
+  grid-area: sidebar2;
+}
+#footer {
+  grid-area: footer;
+}
+img:hover {
+  transform:translateZ(20px);
+}
+#slider::before,
+#slider::after{
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%,
+  rgba(255,255,255,0) 100%);
+  content: '';
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+#slider{
+  
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  margin:auto;
+  
+}
+
+#slider::before{
+  left:0;
+  top:0;
+}
+#slider::after{
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+#slider:hover{
+  animation-play-state: paused;
+}
+#slide-tracker{
+  display: flex;
+  width:calc(250px * 9)
+  
+}
+
+@keyframes marquee {
+  0% {
+      transform: translateX(0%);
+  }
+  100% {
+      transform: translateX(calc(-250px * 14));
+  }
+}
+.animate-marquee-infinite {
+  animation: marquee 40s linear infinite reverse;
+}
+
+/* #slideImg{
+  -webkit-box-reflect: below 10px
+  linear-gradient(to below,rgba(0,0,0,0,0), rgba(0,0,0,0,4) )
+} */
+
+#content1 {
+  grid-area: content1;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+#content2 {
+  grid-area: content2;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+#content3 {
+  grid-area: content3;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+footer {
+  grid-area: footer;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "main"
+      "content1"
+      "content2"
+      "content3"
+      "footer";
+  }
+  #letters,
+   #bigNavbar,
+  #space1 hr, 
+  #space hr,
+  #title hr 
+  {
+    display: none;
+  }
+  #space1 h1,
+  #space h1,
+  #title h1
+   {
+    padding-left: 0;
+  }
+  #auth{
+    /* grid-area:main; */
+    grid-row-start: sidebar;
+    height:100%;
+   place-items: center;
+  }
+  #mobilNavbar{
+    grid-area: nav;
+  }
+  #trend, #trendItems{
+    /* grid-area: trend;
+    place-items: center; */
+    display: none;
+  }
+ 
+  #space1 {
+    grid-area: space1;
+  }
+ 
+  /* #KobeItems, #nikePage, #trendItems, #sneakersPage {
+    grid-area: main;
+    
+  } */
+  
+  /* #sidebar {
+    grid-area: sidebar1;
+  }
+  #title{
+    grid-area: title;
+  
+  }
+  #title3{
+    grid-area: title3;
+    
+  }
+  #sidebar2 {
+    grid-area: sidebar2;
+  }
+  #footer {
+    grid-area: footer;
+  } */
+}
+
+
+@media only screen and (min-width: 769px){
+
+  #mobile{
+    display:none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+

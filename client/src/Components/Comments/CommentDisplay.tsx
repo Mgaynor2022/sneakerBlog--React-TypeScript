@@ -7,24 +7,33 @@ import Comment from "./Comment";
 
 const CommentDisplay = (props:Comments) => {
 
-    const {sneakerId} = props
+    const {sneakerId, handleDelete, user} = props
 
     const {
 
         comments
         
       } = useContext<CommentContextType>(CommentsContext)
-
-console.log(comments)
+      console.log(comments)
 
     return (
         <div>
             {comments &&
              comments.map((comment) => (
-                <Comment {...comment} key={comment._id}  sneakerId={sneakerId} />
+                <Comment
+                 {...comment}
+                  key={comment._id}
+                   commentId={comment._id}
+                     sneakerId={sneakerId}
+                     handleDelete={handleDelete}
+                     user={user}
+                     userId= {comment.user}
+                      />
              ))}
 
         </div>
+
+       
 
 
     )

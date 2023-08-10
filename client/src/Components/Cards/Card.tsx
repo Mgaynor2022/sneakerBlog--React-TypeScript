@@ -1,6 +1,7 @@
-import { Kobe } from "../Types/Types";
+import { Kobe } from "../../Types/Types";
 import {LiaComments} from 'react-icons/lia'
 import {AiOutlineDislike, AiOutlineLike} from 'react-icons/ai'
+
 
 
 const Card = (props:Kobe) => {
@@ -17,8 +18,13 @@ const Card = (props:Kobe) => {
         dislikeKobeSneaker, 
         upvotes,
         commentButton,
-        comments
+        commentsLength
     } = props
+
+    // const { kobeSneakers } = useContext<UserContextType>(UserContext)
+
+    const displayLength = commentsLength(_id)
+
 
     return (
         <>
@@ -39,13 +45,13 @@ const Card = (props:Kobe) => {
         
                         <p id='limited-text' className="md:text-lg text-gray-500 text-base">{story}</p>
                             <div className="flex items-center justify-end " >
-                                {/* <a className=" font-sans" href= {flightClub}>Purchase</a> */}
-                                <span>{comments.length}</span>
-                                <LiaComments className='mr-5' cursor="pointer" size='1.5rem' onClick={() => commentButton(_id)}/>
+                                <span>{displayLength}</span>
+                                {/* <span>{comments.length}</span> */}
+                                 <LiaComments className='mr-5' cursor="pointer" size='1.5rem' onClick={() => commentButton(_id)}/>
                                 
                                 <span>{upvotes.length}</span>
                                 <AiOutlineLike cursor="pointer" size='1.5rem' onClick={() => likeKobeSneaker(_id)} />
-                                <AiOutlineDislike className='ml-2' cursor="pointer" size='1.5rem' onClick={() => dislikeKobeSneaker(_id)} />
+                                <AiOutlineDislike className='ml-2' cursor="pointer" size='1.5rem' onClick={() => dislikeKobeSneaker(_id)} /> 
                             </div>
                     </div>
                     </div>

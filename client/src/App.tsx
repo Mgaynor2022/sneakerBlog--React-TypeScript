@@ -1,69 +1,76 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { UserContext } from './Context/UserProvider'
-import PublicPage from './Components/PublicPage'
-import SidebarPage from './Components/SidebarPage'
-import KobeDisplay from './Components/KobeDisplay'
-import Auth from './Components/Auth'
+import PublicPage from './Components/Pages/PublicPage'
+import SidebarPage from './Components/Pages/SidebarPage'
+import KobeDisplay from './Components/Cards/KobeDisplay'
+import Auth from './Components/Auth/Auth'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import './App.css'
+import '../src/Css/App.css'
 import Navbar from './Components/Navbar'
 import PrivateRoute from './Components/PrivateRoute'
-import JordanSidebar from './Components/JordanSidebar'
-import ContentDisplay from './Components/ContentDisplay'
-import PopularSneakersPage from './Components/PopularSneakersPage'
-import NikePage from './Components/NikePage'
+import JordanSidebar from './Components/Cards/JordanSidebar'
+import ContentDisplay from './Components/Cards/ContentDisplay'
+import PopularSneakersPage from './Components/Pages/PopularSneakersPage'
+import Carousel from './Components/Cards/Carousel'
+import Footer from './Components/Footer'
+import NikePage from './Components/Pages/NikePage'
+
 
 function App() {
 const {token, logout, popularSneakers } =  useContext(UserContext)
+
   return (
-    
-    <div id='container'>
-      <div id="navbar">
+    <>
+    <div id="navbar">
         {token && <Navbar logout={logout} />}
       </div>
+        <div id='container' className=" ">
       <Routes>
           <Route path='/'
-            element={token ? <Navigate to="/PublicPage"/> : <Auth  />} >
+          element={token ? <Navigate to="/PublicPage"/> : <Auth  />}
+             >
+       
           </Route>
 
           <Route path='/PublicPage'
             element={<PrivateRoute token={token} redirectTo="/" >
-
+              {/* <Carousel /> */}
             <KobeDisplay/>
             <JordanSidebar/>
             <PublicPage />
             <ContentDisplay />
-      <footer>Footer</footer>
+            <Footer />
           </PrivateRoute>}>
-          {/* <Route path="/SidebarPage" element={<SidebarPage {...kobeSneakers} />}/> */}
+              
         </Route>
 
         <Route path='/SidebarPage'
             element={<PrivateRoute token={token} redirectTo="/" >
             <SidebarPage/>
+            <Footer />
           </PrivateRoute>}>
         </Route>
         
           <Route path='/PopularSneakersCard/brands/:click'
             element={<PrivateRoute token={token}  redirectTo="/" >
             <NikePage/>
+            <Footer />
           </PrivateRoute>}>
         </Route>
+
         <Route path='/PopularSneakersCard/:id'
             element={<PrivateRoute token={token}  redirectTo="/" >
             <PopularSneakersPage />
+            <Footer />
           </PrivateRoute>}>
         </Route>
-
-
-        {/* <Route path='/PopularSneakersCard/jordan'
-            element={<PrivateRoute token={token}  redirectTo="/" >
-            <NikePage/>
-          </PrivateRoute>}>
-        </Route> */}
           
       </Routes>
+      
     </div>
+    </>
+
+    
     
     
     

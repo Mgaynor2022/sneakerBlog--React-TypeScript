@@ -54,8 +54,10 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
       try {
         const comment = {
             comment: req.body.comment,
-            sneakerId: req.params.sneakerId
+            sneakerId: req.params.sneakerId,
+            user: req.auth._id
         }
+        console.log(comment)
         const newComment = new UserComments(comment)
         const savedComment = await newComment.save();
         console.log("Saved Comment", savedComment)
@@ -117,8 +119,8 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
                     const deleteComment = await UserComments.findOneAndDelete(
                         {_id: req.params.commentId},    
                         {user: req.params._id}
-                        ).send(deleteComment)
-                        return res.status(200)(`This Item ${deletedItem} was deleted`)
+                        )
+                        return res.status(200).send(`This Item ${deleteComment} was deleted`)
                 }
                     catch (err){
                         res.status(500)

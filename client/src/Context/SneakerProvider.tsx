@@ -14,7 +14,9 @@ const SneakerDefault: SneakerContextType = {
     dislikeKobeSneaker: () => { },
     likePopularSneakers: () => { },
     dislikePopularSneakers: () => { },
-    kobeSneakers: []
+    kobeSneakers: [],
+    dislikePublicSneakers: () => {},
+    likePublicSneakers: () => {}
 }
 
 
@@ -120,6 +122,31 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
           .catch((err) => console.log(err));
     }
 
+    const likePublicSneakers = (sneakerId: string) => {
+      const url: string = `/local/api/publicSneakers/likes/${sneakerId}`
+      userAxios
+      .put(url)
+      .then((res) => {
+          setAllSneakers((prevState) =>
+            prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+          );
+        })
+        .then(() => getPublicSneakers())
+        .catch((err) => console.log(err));
+  }
+  const dislikePublicSneakers = (sneakerId: string) => {
+    const url: string = `/local/api/publicSneakers/dislikes/${sneakerId}`
+    userAxios
+    .put(url)
+    .then((res) => {
+        setAllSneakers((prevState) =>
+          prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+        );
+      })
+      .then(() => getPublicSneakers())
+      .catch((err) => console.log(err));
+}
+
     return (
         <SneakerContext.Provider
         value={{
@@ -132,6 +159,8 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
             likePopularSneakers,
             dislikeKobeSneaker,
             dislikePopularSneakers,
+            dislikePublicSneakers,
+            likePublicSneakers,
             kobeSneakers
 
         }}>

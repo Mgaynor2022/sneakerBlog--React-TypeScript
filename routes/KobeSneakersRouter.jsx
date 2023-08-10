@@ -38,7 +38,8 @@ kobeSneakersRouter.put("/like/:sneakerId",
      async (req, res, next) => {
         try {
             const updateLikes = await KobeSneakers.findOneAndUpdate(
-                {_id: req.params.sneakerId, user: req.auth._id},
+                {_id: req.params.sneakerId},
+                // {_id: req.params.sneakerId, user: req.auth._id},
                 {
                     $addToSet: {upvotes: req.auth._id},
                     $pull: {downvotes: req.auth._id},
@@ -59,7 +60,8 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
     async (req, res, next) => {
     try {
         const updateDislike = await KobeSneakers.findOneAndUpdate(
-            {_id: req.params.sneakerId, user: req.auth._id},
+            {_id: req.params.sneakerId},
+            // {_id: req.params.sneakerId, user: req.auth._id},
             {
                 $addToSet: {downvotes: req.auth._id},
                 $pull: {upvotes: req.auth._id},

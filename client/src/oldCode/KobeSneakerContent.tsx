@@ -1,7 +1,7 @@
 import { Kobe } from "../Types/Types";
 import React, { useContext, useState } from "react";
 
-import Card from "../Components/Card";
+import Card from "../Components/Cards/Card";
 import { CommentsContext } from "../Context/CommentsProvider";
 import { CommentContextType } from "../Types/Types";
 import CommentForm from "../Components/Comments/CommentForm"

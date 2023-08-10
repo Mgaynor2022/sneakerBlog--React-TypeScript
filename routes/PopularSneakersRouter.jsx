@@ -20,7 +20,7 @@ popularSneakersRouter.put("/likes/:sneakerId",
     async (req, res, next) => {
         try {
             const updateLikes = await PopularSneakers.findOneAndUpdate(
-                {_id: req.params.sneakerId, user: req.auth._id},
+                {_id: req.params.sneakerId},
                 {
                     $addToSet: {likes: req.auth._id},
                     $pull: {dislikes: req.auth._id}
@@ -61,7 +61,7 @@ popularSneakersRouter.put("/dislikes/:sneakerId",
     async (req, res, next) => {
         try {
             const disLikes = await PopularSneakers.findOneAndUpdate(
-                {_id: req.params.sneakerId, user: req.auth._id},
+                {_id: req.params.sneakerId},
                 {
                     $addToSet: {dislikes: req.auth._id},
                     $pull: {likes: req.auth._id}

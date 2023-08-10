@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthProps } from "../Types/Types";
+import { AuthProps } from "../../Types/Types";
 
 
 const AuthForm = (props: AuthProps) => {
@@ -28,8 +28,7 @@ const AuthForm = (props: AuthProps) => {
             </div>
 
             <div className="relative">
-              <button className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-gray-600 bg-gradient-to-l from-blue-200 to-cyan-200
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">{props.btnText}</button>
+              <button className="w-full text-white inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center rounded-lg transition duration-200 hover:bg-indigo-600 ease bg-black">{props.btnText}</button>
             </div>
             <p className="text-red-600 text-center">{props.errMsg}</p>
           </form>

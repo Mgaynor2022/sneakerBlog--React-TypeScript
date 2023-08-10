@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { CommentContextType, Comments } from "../Types/Types";
 import axios from "axios"
 
@@ -10,16 +10,18 @@ const CommentDefault: CommentContextType = {
         comment: ''
     },
     handleTextArea: () => { },
-    handleSubmit: () => { },
+    // handleSubmit: () => { },
     handleDelete: () => { },
     addComment: () => { },
     getComments: () => { },
     comments: [],
-     sneakerId: "" ,
-     _id: '',
-     commentButton: () => {},
-     currentId:''
-
+    sneakerId: "",
+    _id: '',
+    commentButton: () => { },
+    currentId: '',
+    commentsLength: () => { },
+    commentId: "",
+    getAllComments: () => {}
 }
 export const CommentsContext = createContext(CommentDefault)
 
@@ -47,15 +49,26 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
 
     const [currentId, setCurrentId] = useState<string | null>(null)
 
+    function commentsLength( sneakerId: string): number {
+        return comments.filter(comment => comment.sneakerId === sneakerId).length;
+      }
+
     const commentButton = (sneakerId: string) => {
         setCurrentId(
           currentId === sneakerId ? null : sneakerId
         )
        }
 
-
     const getComments = (sneakerId: string) => {
         const url: string = `/local/api/userComment/${sneakerId}`
+        userAxios.get(url)
+        .then(res => setComments(res.data))
+        .catch(err => console.log(err))
+        
+    }
+
+    const getAllComments = () => {
+        const url: string = "/local/api/userComment"
         userAxios.get(url)
         .then(res => setComments(res.data))
         .catch(err => console.log(err))
@@ -73,50 +86,51 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
             ...prevInput,
             [e.target.name] : e.target.value
         }))
+        
     }
 
+    const resetForm = () => {
+        setCommentInput({
+            comment: '',
+            username: ""
+        })
+    }
 
-    const addComment = (sneakerId: string, info: string): void => {
+// sneaker id will be the current id 
+    const addComment = (sneakerId: string, info: any): void => {
         const url: string = `/local/api/userComment/${sneakerId}`
         userAxios.post(url, info)
-        .then(res => setComments(res.data))
+        .then(res => setComments(prev => [...prev, res.data]))
         .catch(err => console.log(err))
+        resetForm()
     }
 
-    // const deleteComment = (commentId: string): void => {
-    //     const url: string = `/local/api/userComment/${commentId}`;
-    //     userAxios.delete(url, { data: commentId })
-    //         .then(res => {
+
+    // update code to say if userId = user then allow the delete function
+    const handleDelete = (commentId: string): void => {
+        const url: string = `/local/api/userComment/${commentId}`;
+        userAxios.delete(url)
+            .then(res => {
         
-    //         setComments(prev => prev.filter(data => data._id !== commentId));
-    //         });
-    //     };
-
-
-    // // Submits the comment to the Comment APi 
-    // const handleSubmit = (e: React.FormEvent<HTMLFormElement> ,sneakerId: string, info: string): void => {
-    //     e.preventDefault()
-    //     addComment(sneakerId, info)
-       
-    // }
-    // const handleDelete = (commentId :string): void => {
-    //     deleteComment(commentId)
-    // }
+            setComments(prev => prev.filter(comment => comment._id !== commentId));
+            })
+            .catch(err => console.log(err))
+        };
 
     return (
         <CommentsContext.Provider
             value={{
                 commentInput,
-                // setCommentInput,
                 handleChange,
-                // handleSubmit,
-                // handleDelete,
+                handleDelete,
                 handleTextArea,
                 addComment,
                 getComments,
                 comments,
                 commentButton,
-                currentId
+                currentId,
+                commentsLength,
+                getAllComments
                 
             }}> 
             {children}

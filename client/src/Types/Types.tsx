@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 
 
 export type AuthProps = {
@@ -57,6 +58,14 @@ export interface Sneakers {
     dislikeKobeSneaker: (sneakerId: string) => void
     commentButton: (sneakerId: string) => void
     comments: Array<Comments>,
+    details:{
+        retail: number,
+        releaseDate: string,
+        brand: string,
+        type: string,
+        gender: string,
+        description: string
+    }
 
 }
 export interface Kobe  {
@@ -76,7 +85,7 @@ export interface Kobe  {
     retailPrice: number,
     estimatedMarketValue: number,
     story: String,
-    image: string,
+    image: any,
     images:{
         original: string,
         small: string,
@@ -100,6 +109,11 @@ export interface Kobe  {
    backButton: () => void
    commentButton: (sneakerId: string) => void
    comments: Array<Comments>,
+   commentsLength: (sneakerId: string) => void
+   commentInput: {
+    username: string,
+    comment: string
+}
 
 }
 
@@ -116,6 +130,7 @@ export type  UserContextType = {
     login: (credentials: Inputs) => void;
     resetAuthErr: () => void,
     errMsg: string,
+    user: string
     comments: Array<Comments>
     logout: () => void,
     token: string,
@@ -143,6 +158,8 @@ export type SneakerContextType = {
     dislikeKobeSneaker: (sneakerId: string) => void,
     likePopularSneakers: (sneakerId: string) => void,
     dislikePopularSneakers: (sneakerId: string) => void,
+    likePublicSneakers: (sneakerId: string) => void,
+    dislikePublicSneakers: (sneakerId: string) => void,
 
 }
 
@@ -153,7 +170,7 @@ export type CommentContextType = {
     };
     handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
     handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>, info: string) => void;
+    // handleSubmit: (info: string, sneakerId:string) => void;
     handleDelete: (commentId: string) => void,
     addComment: (sneakerId: string, info: string, ) => void,
     comments: Array<Comments>,
@@ -162,21 +179,31 @@ export type CommentContextType = {
     _id: string 
     commentButton: (sneakerId: string) => void
     currentId: string | null
+    commentsLength: (sneakerId: string) => void
+    commentId: string
+    getAllComments: () => void
 
 }
 
 export interface Comments {
+    // children: ReactNode;
     _id: string;
     username: string;
-    comment: string;
+    comments: Array<Comments>
+    // comments: string
     timestamp: string;
     sneakerId: string;
     handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
     handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>, info: string) => void;
+    // handleSubmit: ( info: string, sneakerId: string) => void;
     handleDelete: (commentId: string) => void,
     commentInput: {
         username: string,
         comment: string
-    };
+    }
+    comment:string
+    addComment: (sneakerId:string, info:string) => void
+    commentId: string
+    userId: string
+    user: any
 }[]

@@ -7,7 +7,7 @@ const JordanSidebar: React.FC = () => {
 
     return (
         <>
-            <div id='space' className='flex items-center '>
+            <div id='space' className='flex items-center justify-center '>
                 <h1 className="text-2xl pl-10">Top Jordans Sneakers</h1>
                 <hr className="w-1/5 h-px mx-5 bg-gray-200 border-0"/>
             </div>

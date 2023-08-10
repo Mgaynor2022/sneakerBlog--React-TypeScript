@@ -1,6 +1,8 @@
 const express = require("express")
 const publicSneakersRouter = express.Router()
 const PublicSneakers = require("../model/PublicSchema.jsx")
+const { expressjwt } = require('express-jwt');
+
 
 //Get All
 publicSneakersRouter.get("/", async (req, res, next) =>{
@@ -27,10 +29,12 @@ publicSneakersRouter.get("/search/brand", async (req, res, next) => {
 })
 
 // Updating Sneaker Likes 
-publicSneakersRouter.put("/likes/:sneakerId", async (req, res, next) => {
+publicSneakersRouter.put("/likes/:sneakerId",
+    expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
+     async (req, res, next) => {
     try {
         const updatedLikes = await PublicSneakers.findOneAndUpdate(
-            {_id: req.params.sneakerId, user: req.auth._id},
+            {_id: req.params.sneakerId},
             {
                 $addToSet: {likes: req.auth._id},
                 $pull: {dislikes: req.auth._id}
@@ -46,11 +50,12 @@ publicSneakersRouter.put("/likes/:sneakerId", async (req, res, next) => {
 })
 
 // DisLiking Sneakers 
-publicSneakersRouter.put("/dislikes/:sneakerId", async (req, res, next) => {
+publicSneakersRouter.put("/dislikes/:sneakerId",
+    expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
+    async (req, res, next) => {
     try {
-        const result = await PublicExercise.findByIdAndUpdate(
-            {_id: req.params.sneakerId, user: req.auth._id},
-            // {user: req.body.auth_id},
+        const result = await PublicSneakers.findByIdAndUpdate(
+            {_id: req.params.sneakerId},
             {
                 $addToSet: {dislikes: req.auth._id},
                 $pull: {likes: req.auth._id},

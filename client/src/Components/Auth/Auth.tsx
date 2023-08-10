@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../Context/UserProvider";
+import { UserContext } from "../../Context/UserProvider";
 import AuthForm from "./AuthForm";
-import { TagCloud, TagCloudOptions } from "@frank-mayer/react-tag-cloud"
+import LetteringStairs from "../LetteringStaires";
 
 
  const Auth: React.FC = () => {
@@ -37,40 +37,22 @@ import { TagCloud, TagCloudOptions } from "@frank-mayer/react-tag-cloud"
             [e.target.name] : e.target.value
         }))
     }
-
-    const brandNames: string[] = [
-        'Jordan', 'Nike', 'Adidas',
-         'New Balance','Puma', 'LeBron',
-          'Kyrie', 'Reebok','Vans','Asics',
-        'Converse', 'Under Armour', 'Supra',
-        'Saucony', 'Yeezy', 'Crocs', 'Kobe']
     
 
     return (
 
-
-<div id="auth" className=" bg-gradient-to-l from-blue-200 to-cyan-200 lg:py-10">
-  <div className="flex flex-col  items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
+// pr-10 pl-10 pt-0  pb-0 mt-0 mr-auto mb-0 ml-auto
+<div id="auth" className="lg:py-10 md:pl-16 " >
+  <div className="flex flex-col items-center justify-between  max-w-7xl
       xl:px-5 lg:flex-row">
-    <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
+    <div className="flex flex-col items-center w-full pt-5 md:pr-10 md:pb-20 md:pl-10 lg:pt-20 lg:flex-row">
       <div className="w-full bg-cover relative max-w-md  lg:w-7/12">
         <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
-            {/* <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div> */}
-        <TagCloud  className="mr-20"
-        options={(w: Window & typeof globalThis): TagCloudOptions => ({
-            radius: Math.min(500, w.innerWidth, w.innerHeight) / 2,
-            maxSpeed: "normal",
-            initSpeed: 'slow'
-        })}
-        onClickOptions={{ passive: true }}>
-        {brandNames}
-    </TagCloud>
+    <LetteringStairs />
         </div>
       </div>
       { !toggle ?
-            <div className='w-full ml-10 '>
+            <div className=' w-full md:ml-10 '>
             <AuthForm 
                 handleChange={handleChange}
                 handleSubmit={handleSignUp}
@@ -82,17 +64,17 @@ import { TagCloud, TagCloudOptions } from "@frank-mayer/react-tag-cloud"
                 <p className="text-center underline cursor-pointer" onClick={toggleForm}>Already A Member?</p>
             </div>
             :
-            <div className='w-full ml-10'>
+            <div className='  w-full md:ml-10'>
             <AuthForm 
                 handleChange={handleChange}
                 handleSubmit={handleLogin}
                 inputs={inputs}
                 btnText="Login"
                 errMsg={errMsg}
-                header= "Login Into Your Account"
+                header= "Login Into Account"
                 
                 />
-            <p className="text-center underline cursor-pointer" onClick={toggleForm}>Not a Member</p>
+            <p className="text-center underline cursor-pointer" onClick={toggleForm}>Not a Member?</p>
             </div>
             }
     </div>

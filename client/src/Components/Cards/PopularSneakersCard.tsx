@@ -1,7 +1,7 @@
 import {LiaComments} from 'react-icons/lia'
 import {AiOutlineDislike, AiOutlineLike} from 'react-icons/ai'
 import { MdOutlineArrowBack } from 'react-icons/md'
-import { Sneakers } from "../Types/Types"
+import { Sneakers } from "../../Types/Types"
 
 
 
