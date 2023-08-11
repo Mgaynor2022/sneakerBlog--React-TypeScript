@@ -19,6 +19,7 @@ app.use("/local/api/publicSneakers", require("./routes/PublicSneakersRouter.jsx"
 app.use("/local/api/userComment",require("./routes/UserCommentRouter.jsx"))
 app.use("/local/api/popularSneakers", require("./routes/PopularSneakersRouter.jsx"))
 app.use("/local/api/kobeSneakers", require("./routes/KobeSneakersRouter.jsx"))
+app.use("/local/api/jordanSneakers", require("./routes/JordanSneakersRouter.jsx"))
 // app.use("api/UserSneakers", require("./routes/UserSneakers.jsx"))
 
 //Error Handling 
@@ -41,3 +42,6 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch(err => {
         console.error(err);
     });
+
+    
+

@@ -14,10 +14,11 @@ import PopularSneakersPage from './Components/Pages/PopularSneakersPage'
 import Carousel from './Components/Cards/Carousel'
 import Footer from './Components/Footer'
 import NikePage from './Components/Pages/NikePage'
+import JordanPage from './Components/Pages/JordanPage'
 
 
 function App() {
-const {token, logout, popularSneakers } =  useContext(UserContext)
+const {token, logout } =  useContext(UserContext)
 
   return (
     <>
@@ -47,6 +48,13 @@ const {token, logout, popularSneakers } =  useContext(UserContext)
         <Route path='/SidebarPage'
             element={<PrivateRoute token={token} redirectTo="/" >
             <SidebarPage/>
+            <Footer />
+          </PrivateRoute>}>
+        </Route>
+
+        <Route path='/JordanPage'
+            element={<PrivateRoute token={token} redirectTo="/" >
+            <JordanPage />
             <Footer />
           </PrivateRoute>}>
         </Route>

@@ -10,13 +10,17 @@ const SneakerDefault: SneakerContextType = {
     getKobeSneakers: () => { },
     getPopularSneakers: () => { },
     getPublicSneakers: () => { },
+    getJordanSneakers: () => { },
     likeKobeSneaker: () => { },
     dislikeKobeSneaker: () => { },
     likePopularSneakers: () => { },
     dislikePopularSneakers: () => { },
     kobeSneakers: [],
     dislikePublicSneakers: () => {},
-    likePublicSneakers: () => {}
+    likePublicSneakers: () => {},
+    jordanSneakers: [],
+    dislikeJordanSneaker: () => {},
+    likeJordanSneaker: () => {},
 }
 
 
@@ -45,6 +49,9 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
     // State for kobe sneakers
     const [kobeSneakers, setKobeSneakers] = useState<Kobe[]>([])
 
+    // State for top Jordan Sneakers
+    const [jordanSneakers, setJordanSneakers] = useState<Sneakers[]>([])
+
 
     // GET Requests 
     const getKobeSneakers = () => {
@@ -53,6 +60,12 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
         .then(res => setKobeSneakers(res.data))
         .catch(err => console.log(err))
     }
+    const getJordanSneakers = () => {
+      const url: string = ("/local/api/jordanSneakers")
+      userAxios.get(url)
+      .then(res => setJordanSneakers(res.data))
+      .catch(err => console.log(err))
+  }
     const getPublicSneakers = () => {
         const url: string = "/local/api/publicSneakers"
         userAxios.get(url)
@@ -95,6 +108,32 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
           .catch((err) => console.log(err));
       };
 
+      const likeJordanSneaker = (sneakerId: string) => {
+        const url: string = `/local/api/jordanSneakers/like/${sneakerId}`;
+        userAxios
+          .put(url)
+          .then((res) => {
+            setJordanSneakers((prevState) =>
+              prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+            );
+          })
+          .then(() => getJordanSneakers())
+          .catch((err) => console.log(err));
+      };
+
+      const dislikeJordanSneaker = (sneakerId: string) => {
+        const url: string = `/local/api/jordanSneakers/dislike/${sneakerId}`;
+        userAxios
+          .put(url)
+          .then((res) => {
+            setJordanSneakers((prevState) =>
+              prevState.map((prev) => (sneakerId !== prev._id ? prev : res.data))
+            );
+          })
+          .then(() => getJordanSneakers())
+          .catch((err) => console.log(err));
+      };
+
 
     const likePopularSneakers = (sneakerId: string) => {
         const url: string = `/local/api/popularSneakers/likes/${sneakerId}`
@@ -133,7 +172,9 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
         })
         .then(() => getPublicSneakers())
         .catch((err) => console.log(err));
+
   }
+  
   const dislikePublicSneakers = (sneakerId: string) => {
     const url: string = `/local/api/publicSneakers/dislikes/${sneakerId}`
     userAxios
@@ -155,13 +196,17 @@ const SneakerProvider = ({children} : ContextProviderProps) => {
             getKobeSneakers,
             getPublicSneakers,
             getPopularSneakers,
+            getJordanSneakers,
             likeKobeSneaker,
             likePopularSneakers,
             dislikeKobeSneaker,
             dislikePopularSneakers,
             dislikePublicSneakers,
             likePublicSneakers,
-            kobeSneakers
+            kobeSneakers,
+            jordanSneakers,
+            likeJordanSneaker,
+            dislikeJordanSneaker
 
         }}>
             {children}

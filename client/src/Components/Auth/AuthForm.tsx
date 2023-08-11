@@ -28,7 +28,7 @@ const AuthForm = (props: AuthProps) => {
             </div>
 
             <div className="relative">
-              <button className="w-full text-white inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center rounded-lg transition duration-200 hover:bg-indigo-600 ease bg-black">{props.btnText}</button>
+              <button id="authBtn" className="w-full text-white inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center rounded-lg transition duration-200 bg-black">{props.btnText}</button>
             </div>
             <p className="text-red-600 text-center">{props.errMsg}</p>
           </form>

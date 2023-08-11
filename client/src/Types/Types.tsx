@@ -41,6 +41,7 @@ export interface Sneakers {
     popularSneakers: {}[];
     kobeSneakers: {}[],
     allSneakers: {}[],
+    jordanSneakers: {}[],
     _id: string
     id: string,
     colorway: string,
@@ -148,18 +149,19 @@ export type SneakerContextType = {
     popularSneakers: {}[];
     kobeSneakers: {}[],
     allSneakers: {}[],
+    jordanSneakers: Array<Sneakers>
     getPublicSneakers: () => void;
-    // allSneakers: Array<Sneakers>;
-    // popularSneakers: Array<Sneakers>,
     getPopularSneakers: () => void ,
     getKobeSneakers: () => void,
-    // kobeSneakers: Array<Kobe>
+    getJordanSneakers: () => void
     likeKobeSneaker: (sneakerId: string) => void,
     dislikeKobeSneaker: (sneakerId: string) => void,
     likePopularSneakers: (sneakerId: string) => void,
     dislikePopularSneakers: (sneakerId: string) => void,
     likePublicSneakers: (sneakerId: string) => void,
     dislikePublicSneakers: (sneakerId: string) => void,
+    likeJordanSneaker: (sneakerId: string) => void,
+    dislikeJordanSneaker: (sneakerId: string) => void,
 
 }
 

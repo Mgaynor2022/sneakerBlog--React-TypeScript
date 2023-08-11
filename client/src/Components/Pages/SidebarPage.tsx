@@ -33,7 +33,7 @@ const SidebarPage: React.FC = (): any => {
         commentsLength
       } = useContext<CommentContextType>(CommentsContext)
 
-      const [showComment, setShowComment] = useState(false)
+      const [showComment, setShowComment] = useState<boolean>(false)
 
    useEffect(() => {
         getKobeSneakers()
@@ -49,7 +49,7 @@ const SidebarPage: React.FC = (): any => {
 
     return (
         <div id="KobeItems" className="mb-20">
-            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded" onClick={backButton} size='1.5rem' cursor='pointer' />
+            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer' />
 
             {kobeSneakers &&
               kobeSneakers.map((kobeSneaker) => (

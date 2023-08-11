@@ -12,9 +12,11 @@ const JordanSidebar: React.FC = () => {
                 <hr className="w-1/5 h-px mx-5 bg-gray-200 border-0"/>
             </div>
             <div id="sidebar2">
-                <SneakerBrandCard
-                image = 'https://images.unsplash.com/photo-1661592859064-4c3be073f72c' 
-                header = 'View Top Air Jordans '/>
+                <Link to= "/JordanPage">
+                    <SneakerBrandCard
+                    image = 'https://images.unsplash.com/photo-1661592859064-4c3be073f72c' 
+                    header = 'View Top Air Jordans '/>
+                </Link>
             </div>
         
         </>

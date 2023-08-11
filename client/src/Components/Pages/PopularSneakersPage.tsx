@@ -43,7 +43,7 @@ const PopularSneakersPage = () => {
 
     } = useContext<SneakerContextType>(SneakerContext)
 
-    const [ showComment, setShowComment] = useState(false)
+    const [ showComment, setShowComment] = useState<boolean>(false)
 
     useEffect(() => {
         getPopularSneakers()
@@ -60,7 +60,7 @@ const PopularSneakersPage = () => {
 
     return (
         <div id="sneakersPage">
-            <MdOutlineArrowBack className="" onClick= {backButton} size='1.5rem' cursor="pointer" />
+            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick= {backButton} size='3rem' cursor="pointer" />
             {filteredSneaker && filteredSneaker.map((trend) => (
                 <div key={trend.id}>
                     <Card

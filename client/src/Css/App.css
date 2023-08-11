@@ -9,6 +9,21 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 10px; /* Adjust the width as needed */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(239 68 68); 
+  border-radius: 8px; 
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563; 
+}
+
 @layer utilities {
   .animation-delay-2000{
     animation-delay: 2s;
@@ -51,6 +66,23 @@
   grid-row-start: 3;
   grid-row-end: 4;
  place-items: center;
+}
+#authBtn{
+  position: relative;
+  border:none;
+  transition: .4s ease-in;
+  z-index: 1;
+  
+}
+#authBtn::before,
+#authBtn::after{
+  position: absolute;
+  content: "";
+  z-index: -1;
+}
+#authBtn:hover{
+  box-shadow: inset -15.5em 0 0 0 rgb(239 68 68),
+  inset 15.5em 0 0 0 rgb(239 68 68)
 }
 
 #about{
