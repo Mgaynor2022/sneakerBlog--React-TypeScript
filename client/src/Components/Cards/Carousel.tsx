@@ -1,6 +1,6 @@
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import React, { useState } from "react";
-import "../CSS/Carousel.css"
+import { useState } from "react";
+import "../../Css/Carousel.css"
 
 const image = [
      {url:"https://images.unsplash.com/photo-1441986300917-64674bd600d8"},

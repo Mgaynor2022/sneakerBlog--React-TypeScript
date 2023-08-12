@@ -10,17 +10,16 @@ const CommentDefault: CommentContextType = {
         comment: ''
     },
     handleTextArea: () => { },
-    // handleSubmit: () => { },
     handleDelete: () => { },
     addComment: () => { },
     getComments: () => { },
     comments: [],
-    sneakerId: "",
-    _id: '',
+    // sneakerId: "",
+    // _id: '',
     commentButton: () => { },
     currentId: '',
     commentsLength: () => { },
-    commentId: "",
+    // commentId: "",
     getAllComments: () => {}
 }
 export const CommentsContext = createContext(CommentDefault)
@@ -97,7 +96,7 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
     }
 
 // sneaker id will be the current id 
-    const addComment = (sneakerId: string, info: any): void => {
+    const addComment = (sneakerId: string, info: object): void => {
         const url: string = `/local/api/userComment/${sneakerId}`
         userAxios.post(url, info)
         .then(res => setComments(prev => [...prev, res.data]))
@@ -110,7 +109,7 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
     const handleDelete = (commentId: string): void => {
         const url: string = `/local/api/userComment/${commentId}`;
         userAxios.delete(url)
-            .then(res => {
+            .then(_res  => {
         
             setComments(prev => prev.filter(comment => comment._id !== commentId));
             })
@@ -130,7 +129,10 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
                 commentButton,
                 currentId,
                 commentsLength,
-                getAllComments
+                getAllComments,
+                // commentId
+                
+                
                 
             }}> 
             {children}

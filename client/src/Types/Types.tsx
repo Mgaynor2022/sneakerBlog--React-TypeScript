@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 
 
 export type AuthProps = {
@@ -16,7 +15,6 @@ export type AuthProps = {
   export type BrandLink = {
     image: string,
     header: string,
-    // handleClick: () => void
   }
  
 export interface Sneakers {
@@ -50,6 +48,7 @@ export interface Sneakers {
     releaseYear: string,
     releaseDate: string,
     retailPrice: Number,
+    retail: any,
     estimatedMarketValue: Number,
     story: String,
     likes: [],
@@ -73,47 +72,45 @@ export interface Kobe  {
     
     _id: string;
     
-    thumbnail: string | undefined;
-    id: string,
-    sku: string,
+    // thumbnail: string | undefined;
+    // id: string,
+    // sku: string,
     brand: string,
     name: string,
-    colorway: string,
-    gender: string,
-    silhouette: string,
-    releaseYear: string,
+    // colorway: string,
+    // gender: string,
+    // silhouette: string,
+    // releaseYear: string,
     releaseDate: string,
     retailPrice: number,
-    estimatedMarketValue: number,
+    // estimatedMarketValue: number,
     story: String,
     image: any,
-    images:{
-        original: string,
-        small: string,
-        thumbnail: string
-    },
+    // images:{
+    //     original: string,
+    //     small: string,
+    //     thumbnail: string
+    // },
     
-    links: {
-        stockx: string,
-        goat: string,
-        flightClub: string,
-        stadiumGoods: string
-    },
+    // links: {
+    //     stockx: string,
+    //     goat: string,
+    //     flightClub: string,
+    //     stadiumGoods: string
+    // },
     upvotes: []
     downvotes: []
     getComments: (sneakerId: string) => void
     likeKobeSneaker: (sneakerId: string) => void,
     dislikeKobeSneaker: (sneakerId: string) => void
-    // setCurrentKobeId: () => {}
-    // currentKobeId: string | null
-   toggleComments: () => void
+//    toggleComments: () => void
    backButton: () => void
    commentButton: (sneakerId: string) => void
    comments: Array<Comments>,
    commentsLength: (sneakerId: string) => void
    commentInput: {
     username: string,
-    comment: string
+    // comment: string
 }
 
 }
@@ -172,40 +169,51 @@ export type CommentContextType = {
     };
     handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
     handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
-    // handleSubmit: (info: string, sneakerId:string) => void;
     handleDelete: (commentId: string) => void,
-    addComment: (sneakerId: string, info: string, ) => void,
+    addComment: (sneakerId: string, info: object, ) => void,
     comments: Array<Comments>,
     getComments: (sneakerId: string) => void
-    sneakerId: string
-    _id: string 
+    // sneakerId: string
+    // _id: string 
     commentButton: (sneakerId: string) => void
     currentId: string | null
-    commentsLength: (sneakerId: string) => void
-    commentId: string
+    commentsLength: (sneakerId: string) => any
+    // commentId: string
     getAllComments: () => void
 
 }
 
 export interface Comments {
-    // children: ReactNode;
     _id: string;
     username: string;
     comments: Array<Comments>
-    // comments: string
     timestamp: string;
     sneakerId: string;
-    handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
-    handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
-    // handleSubmit: ( info: string, sneakerId: string) => void;
+    // handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
+    // handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
     handleDelete: (commentId: string) => void,
+    // commentInput: {
+    //     username: string,
+    //     comment: string
+    // }
+    comment:string
+    // addComment: (sneakerId:string, info:string) => void
+    commentId: string
+    userId: string
+    user: any
+}
+export interface CommentsForm {
     commentInput: {
         username: string,
         comment: string
     }
-    comment:string
-    addComment: (sneakerId:string, info:string) => void
-    commentId: string
-    userId: string
+        handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
+        addComment: (sneakerId:string, info:object) => void
+        sneakerId: string;
+}
+
+export interface CommentDisplayProps {
     user: any
-}[]
+    sneakerId: string;
+    handleDelete: (commentId: string) => void,
+}

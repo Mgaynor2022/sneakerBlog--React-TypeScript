@@ -23,7 +23,6 @@ const SidebarPage: React.FC = (): any => {
       const {
         comments,
         commentInput,
-        handleChange,
         handleTextArea,
         handleDelete,
         addComment,
@@ -70,7 +69,6 @@ const SidebarPage: React.FC = (): any => {
             <>
               <CommentForm
                 commentInput={commentInput}
-                handleChange={handleChange}
                 handleTextArea={handleTextArea}
                 // handleSubmit = {handleSubmit}
                 addComment= {addComment}

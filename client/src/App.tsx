@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import {useContext} from 'react'
 import { UserContext } from './Context/UserProvider'
 import PublicPage from './Components/Pages/PublicPage'
 import SidebarPage from './Components/Pages/SidebarPage'
@@ -11,7 +11,6 @@ import PrivateRoute from './Components/PrivateRoute'
 import JordanSidebar from './Components/Cards/JordanSidebar'
 import ContentDisplay from './Components/Cards/ContentDisplay'
 import PopularSneakersPage from './Components/Pages/PopularSneakersPage'
-import Carousel from './Components/Cards/Carousel'
 import Footer from './Components/Footer'
 import NikePage from './Components/Pages/NikePage'
 import JordanPage from './Components/Pages/JordanPage'
@@ -66,7 +65,7 @@ const {token, logout } =  useContext(UserContext)
           </PrivateRoute>}>
         </Route>
 
-        <Route path='/PopularSneakersCard/:id'
+        <Route path='/PopularSneakersPage/:id'
             element={<PrivateRoute token={token}  redirectTo="/" >
             <PopularSneakersPage />
             <Footer />
@@ -77,6 +76,7 @@ const {token, logout } =  useContext(UserContext)
       
     </div>
     </>
+    //PopularSneakersCard
 
     
     

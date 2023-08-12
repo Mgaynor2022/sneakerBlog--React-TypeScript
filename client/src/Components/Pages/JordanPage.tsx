@@ -25,12 +25,10 @@ const JordanPage: React.FC = () => {
      } = useContext<SneakerContextType>(SneakerContext)
 
      const {
-        comments,
         commentButton,
         commentsLength,
         currentId, 
         commentInput,
-        handleChange,
         handleTextArea,
         handleDelete,
         addComment,
@@ -52,6 +50,8 @@ const JordanPage: React.FC = () => {
         }
     }, [currentId])
 
+    console.log("Jordans", jordanSneakers)
+
     return (
         <div id="jordanPage">
             <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer'/>
@@ -62,11 +62,10 @@ const JordanPage: React.FC = () => {
                     {...sneaker}
                     image={sneaker.image}
                     name={sneaker.name}
-                    brand={sneaker.details.brand}
-                    releaseDate={sneaker.details.releaseDate}
-                    retailPrice={sneaker.details.retail}
-                    story={sneaker.details.description}
-                    comments={comments}
+                    brand={sneaker.brand}
+                    releaseDate={sneaker.releaseDate}
+                    retailPrice={sneaker.retail}
+                    story={sneaker.description}
                     backButton={backButton}
                     upvotes={sneaker.likes}
                     downvotes={sneaker.dislikes}
@@ -79,7 +78,6 @@ const JordanPage: React.FC = () => {
                         <>
                             <CommentForm
                             commentInput={commentInput}
-                            handleChange={handleChange}
                             handleTextArea={handleTextArea}
                             addComment={addComment}
                             sneakerId={sneaker._id}

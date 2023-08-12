@@ -1,6 +1,5 @@
 import {LiaComments} from 'react-icons/lia'
-import {AiOutlineDislike, AiOutlineLike} from 'react-icons/ai'
-import { MdOutlineArrowBack } from 'react-icons/md'
+import {AiOutlineDislike} from 'react-icons/ai'
 import { Sneakers } from "../../Types/Types"
 
 
@@ -8,12 +7,11 @@ import { Sneakers } from "../../Types/Types"
 const PopularSneakersCard = (props:Sneakers): any => {
 
     const {
-        addComment,
+        
         image,
         name,
         release_date,
         brand,
-        category,
         description,
         price,
     } = props

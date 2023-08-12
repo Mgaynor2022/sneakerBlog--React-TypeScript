@@ -1,31 +1,28 @@
-import { Comments } from "../../Types/Types";
+import { CommentsForm } from "../../Types/Types";
 
-
-const CommentForm = (props: Comments) => {
+const CommentForm = (props: CommentsForm) => {
 
  const   {
         commentInput,
         handleTextArea,
-        handleChange,
         addComment,
         sneakerId,
+        
 
     } = props
+
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         addComment(sneakerId, commentInput)
-        console.log("Added To Database.......", commentInput.comment)
+        console.log("Added To Database.......", commentInput)
         
-
     }
-
 
    return (
     <>
 
     <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-        {/* <label className="block mb-2 text-sm font-medium text-gray-900">Your Comment</label> */}
         <textarea className="border mt-10 border-black p-2.5 w-72 md:w-96 h-24 text-sm text-gray-900 bg-gray-50 rounded-lg  focus:ring-blue-500 focus:border-blue-500"
         name="comment"
         placeholder="Type Your Comment"

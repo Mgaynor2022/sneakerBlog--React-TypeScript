@@ -29,7 +29,6 @@ const PopularSneakersPage = () => {
         commentsLength,
         currentId, 
         commentInput,
-        handleChange,
         handleTextArea,
         handleDelete,
         addComment,
@@ -68,7 +67,7 @@ const PopularSneakersPage = () => {
                     _id= {trend._id}
                     backButton={backButton}
                     releaseDate={trend.release_date}
-                    thumbnail={trend.image}
+                    // thumbnail={trend.image}
                     comments={comments}
                     story = {trend.description}
                     retailPrice={trend.price}
@@ -85,7 +84,6 @@ const PopularSneakersPage = () => {
                         <>
                             <CommentForm
                             commentInput={commentInput}
-                            handleChange={handleChange}
                             handleTextArea={handleTextArea}
                             addComment={addComment}
                             sneakerId={trend._id}

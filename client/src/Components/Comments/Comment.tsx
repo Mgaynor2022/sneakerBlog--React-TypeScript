@@ -11,7 +11,8 @@ const Comment = (props:Comments) => {
         handleDelete,
         commentId,
         user,
-        userId
+        userId,
+        
     } = props
 
 

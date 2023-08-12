@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CommentsContext } from "../../Context/CommentsProvider";
-import { Comments } from "../../Types/Types";
+import {  CommentDisplayProps} from "../../Types/Types";
 import { CommentContextType } from "../../Types/Types";
 import Comment from "./Comment";
 
 
-const CommentDisplay = (props:Comments) => {
+const CommentDisplay = (props: CommentDisplayProps) => {
 
     const {sneakerId, handleDelete, user} = props
 

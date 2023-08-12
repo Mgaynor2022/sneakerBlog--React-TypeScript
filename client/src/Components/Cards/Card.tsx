@@ -21,10 +21,7 @@ const Card = (props:Kobe) => {
         commentsLength
     } = props
 
-    // const { kobeSneakers } = useContext<UserContextType>(UserContext)
-
-    const displayLength = commentsLength(_id)
-
+    const displayLength: any = commentsLength(_id)
 
     return (
         <>

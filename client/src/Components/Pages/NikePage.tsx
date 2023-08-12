@@ -34,7 +34,6 @@ const NikePage: React.FC = () => {
         commentsLength,
         currentId, 
         commentInput,
-        handleChange,
         handleTextArea,
         handleDelete,
         addComment,
@@ -84,7 +83,6 @@ const NikePage: React.FC = () => {
                         <>
                             <CommentForm
                             commentInput={commentInput}
-                            handleChange={handleChange}
                             handleTextArea={handleTextArea}
                             addComment={addComment}
                             sneakerId={sneaker._id}

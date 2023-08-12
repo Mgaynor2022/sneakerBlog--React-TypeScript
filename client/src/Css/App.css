@@ -24,6 +24,7 @@
   background-color: #4b5563; 
 }
 
+
 @layer utilities {
   .animation-delay-2000{
     animation-delay: 2s;
@@ -52,6 +53,9 @@
     grid-gap: 10px;
     text-align: center;
     ;
+  }
+  #carousel {
+    grid-area: hero
   }
   #bigNavbar{
     grid-area: nav;
@@ -107,7 +111,7 @@
 #space1 {
   grid-area: space1;
 }
-#KobeItems, #nikePage, #trendItems, #sneakersPage {
+#KobeItems, #jordanPage, #nikePage, #trendItems, #sneakersPage {
   grid-area: main;
   
 }

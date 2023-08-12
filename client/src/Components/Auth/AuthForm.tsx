@@ -1,4 +1,3 @@
-import React from "react";
 import { AuthProps } from "../../Types/Types";
 
 
@@ -6,7 +5,6 @@ const AuthForm = (props: AuthProps) => {
 
     return (
 
-      
         <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0">
         <div className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
             relative z-10">

@@ -1,8 +1,8 @@
-import React, {useState, useEffect,  createContext} from "react"
+import React, {useState, createContext} from "react"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { UserContextType } from "../Types/Types"
-import { Inputs, Sneakers, Comments, Kobe } from "../Types/Types"
+import { Inputs, Sneakers, Kobe } from "../Types/Types"
 
 const ContextDefault: UserContextType = {
     getPublicSneakers: () => { },
@@ -126,9 +126,7 @@ function resetAuthErr(){
 
     // State for all of the sneakers 
     const [allSneakers, setAllSneakers] = useState<Sneakers[]>([])
-    const [jordanSneakers, setJordanSneakers] = useState<Sneakers[]>([])
 
-    
     const getPublicSneakers = () => {
         const url: string = "/local/api/publicSneakers"
         userAxios.get(url)
