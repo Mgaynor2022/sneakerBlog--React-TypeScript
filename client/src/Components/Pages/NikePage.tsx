@@ -9,6 +9,8 @@ import { CommentsContext } from "../../Context/CommentsProvider"
 import CommentForm from "../Comments/CommentForm"
 import CommentDisplay from "../Comments/CommentDisplay"
 
+// Implement Lazy loading to improve performance throughout the app 
+
 
 const NikePage: React.FC = () => {
     

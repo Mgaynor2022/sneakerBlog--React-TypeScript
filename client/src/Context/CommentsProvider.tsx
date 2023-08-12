@@ -14,12 +14,9 @@ const CommentDefault: CommentContextType = {
     addComment: () => { },
     getComments: () => { },
     comments: [],
-    // sneakerId: "",
-    // _id: '',
     commentButton: () => { },
     currentId: '',
     commentsLength: () => { },
-    // commentId: "",
     getAllComments: () => {}
 }
 export const CommentsContext = createContext(CommentDefault)
@@ -130,9 +127,6 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
                 currentId,
                 commentsLength,
                 getAllComments,
-                // commentId
-                
-                
                 
             }}> 
             {children}

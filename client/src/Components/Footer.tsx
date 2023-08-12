@@ -16,13 +16,13 @@ const Footer: React.FC = () => {
                     </div>
                     <p className="text-xs">@ 2023 sneaker blog.</p>
                 </div>
-                <div className=" col-start-3 col-end-4 p-2">
+                <div className=" col-start-3 col-end-4 p-2 ">
                     <h1 className="mb-5 font-bold  md:text-2xl ">Company</h1>
-                    <ul className="flex flex-col justify-between ">
-                        <li className="mb-2 text-sm">
+                    <ul className="flex flex-col justify-between  ">
+                        <li className="mb-2 text-sm ">
                             Contact Us 
                         </li>
-                        <li className="mb-2">
+                        <li className="mb-2  ">
                             Privacy Policy
                         </li>
                         <li>

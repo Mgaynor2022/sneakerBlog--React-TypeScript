@@ -71,46 +71,23 @@ export interface Sneakers {
 export interface Kobe  {
     
     _id: string;
-    
-    // thumbnail: string | undefined;
-    // id: string,
-    // sku: string,
     brand: string,
     name: string,
-    // colorway: string,
-    // gender: string,
-    // silhouette: string,
-    // releaseYear: string,
     releaseDate: string,
     retailPrice: number,
-    // estimatedMarketValue: number,
     story: String,
     image: any,
-    // images:{
-    //     original: string,
-    //     small: string,
-    //     thumbnail: string
-    // },
-    
-    // links: {
-    //     stockx: string,
-    //     goat: string,
-    //     flightClub: string,
-    //     stadiumGoods: string
-    // },
     upvotes: []
     downvotes: []
     getComments: (sneakerId: string) => void
     likeKobeSneaker: (sneakerId: string) => void,
     dislikeKobeSneaker: (sneakerId: string) => void
-//    toggleComments: () => void
    backButton: () => void
    commentButton: (sneakerId: string) => void
    comments: Array<Comments>,
    commentsLength: (sneakerId: string) => void
    commentInput: {
     username: string,
-    // comment: string
 }
 
 }
@@ -189,15 +166,8 @@ export interface Comments {
     comments: Array<Comments>
     timestamp: string;
     sneakerId: string;
-    // handleTextArea: (e:React.ChangeEvent <HTMLTextAreaElement> ) => void;
-    // handleChange:(e: React.ChangeEvent <HTMLInputElement>) => void;
     handleDelete: (commentId: string) => void,
-    // commentInput: {
-    //     username: string,
-    //     comment: string
-    // }
     comment:string
-    // addComment: (sneakerId:string, info:string) => void
     commentId: string
     userId: string
     user: any

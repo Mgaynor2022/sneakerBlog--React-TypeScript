@@ -70,7 +70,6 @@ const SidebarPage: React.FC = (): any => {
               <CommentForm
                 commentInput={commentInput}
                 handleTextArea={handleTextArea}
-                // handleSubmit = {handleSubmit}
                 addComment= {addComment}
                 sneakerId= {kobeSneaker._id}
                 />
