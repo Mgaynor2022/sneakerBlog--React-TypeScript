@@ -1,5 +1,5 @@
-import '../CSS/LetteringStairs.css'
 import About from './About'
+import "../Css/LetteringStairs.css"
 
 
 
