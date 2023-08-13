@@ -32,6 +32,11 @@ app.use((err,req,res,next) =>{
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
   });
+  app.get('./assets/index-2e1427eb.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    // Load and send your JavaScript module here
+  });
+  
 
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
