@@ -3,6 +3,7 @@ const app = express()
 require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
+const path = require("path")
 const cors = require("cors")
 var { expressjwt: jwt } = require("express-jwt")
 
@@ -31,7 +32,7 @@ app.use((err,req,res,next) =>{
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
   });
-  
+
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
