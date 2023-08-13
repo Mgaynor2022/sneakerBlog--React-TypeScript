@@ -27,6 +27,11 @@ app.use((err,req,res,next) =>{
     console.log(err)
     return res.send({errMsg:err.message})
   })
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  });
+  
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
