@@ -52,7 +52,7 @@ const SidebarPage: React.FC = (): any => {
 
             {kobeSneakers &&
               kobeSneakers.map((kobeSneaker) => (
-              <div  key={kobeSneaker._id}>
+              <React.Fragment key={kobeSneaker._id}>
                 <Card
                  {...kobeSneaker}
                  image={kobeSneaker?.image.thumbnail}
@@ -84,7 +84,7 @@ const SidebarPage: React.FC = (): any => {
           )}
 
     
-                </div>
+                </React.Fragment>
 
             ))}
             

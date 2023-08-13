@@ -8,6 +8,7 @@ import { CommentsContext } from "../../Context/CommentsProvider";
 import { SneakerContext } from "../../Context/SneakerProvider";
 import CommentForm from "../Comments/CommentForm";
 import CommentDisplay from "../Comments/CommentDisplay";
+import React from "react";
 
 
 
@@ -61,13 +62,12 @@ const PopularSneakersPage = () => {
         <div id="sneakersPage">
             <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick= {backButton} size='3rem' cursor="pointer" />
             {filteredSneaker && filteredSneaker.map((trend) => (
-                <div key={trend.id}>
+                <React.Fragment key={trend.id}>
                     <Card
                     {...trend}
                     _id= {trend._id}
                     backButton={backButton}
                     releaseDate={trend.release_date}
-                    // thumbnail={trend.image}
                     comments={comments}
                     story = {trend.description}
                     retailPrice={trend.price}
@@ -98,7 +98,7 @@ const PopularSneakersPage = () => {
                           
                         </>
                      )}
-                </div>
+                </React.Fragment>
              ))}  
         </div>
     )

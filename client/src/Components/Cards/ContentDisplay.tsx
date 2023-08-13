@@ -12,15 +12,13 @@ const ContentDisplay: React.FC = () => {
         setClickValue(value)
     }
     console.log(clickValue)
-
-    ///PopularSneakersCard/brands/
-
+    
     return (
         <>
-             <div id='title' className='flex items-center justify-center '>
+             <header id='title' className='flex items-center justify-center '>
                 <h1 className="text-2xl pl-10">Popular Brands</h1>
                 <hr className="w-8/12  h-px mx-5 bg-gray-200 border-0"/>
-            </div>
+            </header>
                 <div id="content1" onMouseOver={() => handleClick('Nike')} >
                         <Link to={`/PopularSneakersCard/brands/${clickValue}`}>
                             <SneakerBrandCard

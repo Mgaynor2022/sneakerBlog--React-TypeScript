@@ -8,6 +8,7 @@ import { SneakerContext } from "../../Context/SneakerProvider"
 import { CommentsContext } from "../../Context/CommentsProvider"
 import CommentForm from "../Comments/CommentForm"
 import CommentDisplay from "../Comments/CommentDisplay"
+import React from "react"
 
 // Implement Lazy loading to improve performance throughout the app 
 
@@ -63,7 +64,7 @@ const NikePage: React.FC = () => {
             <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer'/>
             
             {filteredNike && filteredNike.map((sneaker) => (
-                <div key={sneaker.brand}>
+                <React.Fragment key={sneaker.brand}>
                     <Card 
                     {...sneaker}
                     image={sneaker.image}
@@ -99,7 +100,7 @@ const NikePage: React.FC = () => {
                           
                         </>
                      )}
-                </div>
+                </React.Fragment>
             ))}
         </div>
     )

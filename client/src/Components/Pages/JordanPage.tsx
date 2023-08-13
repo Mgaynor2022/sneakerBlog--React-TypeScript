@@ -7,6 +7,7 @@ import CommentForm from "../Comments/CommentForm"
 import CommentDisplay from "../Comments/CommentDisplay"
 import { SneakerContext } from "../../Context/SneakerProvider"
 import Card from "../Cards/Card"
+import React from "react"
 
 
 const JordanPage: React.FC = () => {
@@ -57,7 +58,7 @@ const JordanPage: React.FC = () => {
             <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer'/>
             
             { jordanSneakers && jordanSneakers.map((sneaker) => (
-                <div key={sneaker._id}>
+                <React.Fragment key={sneaker._id}>
                     < Card
                     {...sneaker}
                     image={sneaker.image}
@@ -92,7 +93,7 @@ const JordanPage: React.FC = () => {
                           
                         </>
                      )}
-                </div>
+                </React.Fragment>
             ))}
         </div>
     )

@@ -17,7 +17,7 @@ const CommentDisplay = (props: CommentDisplayProps) => {
       console.log(comments)
 
     return (
-        <div>
+        <>
             {comments &&
              comments.map((comment) => (
                 <Comment
@@ -31,7 +31,7 @@ const CommentDisplay = (props: CommentDisplayProps) => {
                       />
              ))}
 
-        </div>
+        </>
 
        
 

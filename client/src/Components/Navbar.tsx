@@ -16,8 +16,8 @@ const Navbar = (props: { logout: any }) => {
 
     return (
         
-        <div className="">
-            <header id="bigNavbar" className="bg-black px-8 py-8 flex justify-between items-center">
+        <>
+            <nav id="bigNavbar" className="bg-black px-8 py-8 flex justify-between items-center">
 					<h1  className="font-bold text-xl text-white tracking-wider">SneakerBlog</h1>
 					<ul className="flex items-center uppercase text-sm ml-8">
 
@@ -29,7 +29,7 @@ const Navbar = (props: { logout: any }) => {
                   <button onClick={logout} className="px-5 py-2 bg-red-500 text-white font-semibold hover:bg-gray-700">Logout</button> 
                 </li>
 					</ul>
-				</header>
+				</nav>
         <div id='mobile' className="">
                 <nav  className={'px-2 py-5  bg-black items-center' }>
                 <div className='flex justify-between items-center'>
@@ -53,7 +53,7 @@ const Navbar = (props: { logout: any }) => {
                 </div>
                 </nav>
             </div>
-    </div>
+    </>
         
         
     )

@@ -7,7 +7,7 @@ import About from "./About";
 const Footer: React.FC = () => {
 
     return (
-        <div id="footer" className="text-white bg-black text-center ">
+        <footer id="footer" className="text-white bg-black text-center ">
             <div className="grid md:grid-cols-6 mt-5 ">
                 <div className=" col-start-1 col-end-3 p-2">
                     <h1 className="md:text-2xl text-sm font-bold mb-2">About Me</h1>
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 
 }

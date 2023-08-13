@@ -20,7 +20,7 @@ const Comment = (props:Comments) => {
     console.log(user._id)
 
     return (
-        <div>
+        <>
             {user._id !== userId ? 
             
             <div className="relative grid grid-cols-1 gap-4 p-3 mb-8 border  bg-white md:space-y-0 rounded-xl shadow-lg  max-w-xs md:max-w-3xl mx-auto">
@@ -50,7 +50,7 @@ const Comment = (props:Comments) => {
                 <TiDelete className="text-red-500" size='1.5rem' onClick={() => handleDelete(commentId)}/>
             </div>         
             }
-        </div>
+        </>
 
 
     )

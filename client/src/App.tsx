@@ -24,7 +24,7 @@ const {token, logout } =  useContext(UserContext)
     <div id="navbar">
         {token && <Navbar logout={logout} />}
       </div>
-        <div id='container' className=" ">
+        <div id='container'>
       <Routes>
           <Route path='/'
           element={token ? <Navigate to="/PublicPage"/> : <Auth  />}
@@ -34,7 +34,6 @@ const {token, logout } =  useContext(UserContext)
 
           <Route path='/PublicPage'
             element={<PrivateRoute token={token} redirectTo="/" >
-              {/* <Carousel /> */}
             <KobeDisplay/>
             <JordanSidebar/>
             <PublicPage />
@@ -76,7 +75,6 @@ const {token, logout } =  useContext(UserContext)
       
     </div>
     </>
-    //PopularSneakersCard
 
     
     
