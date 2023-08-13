@@ -29,6 +29,8 @@ app.use((err,req,res,next) =>{
     return res.send({errMsg:err.message})
   })
 
+  app.use(express.static(path.join(__dirname, "client", "dist")))
+
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
   });
