@@ -51,12 +51,11 @@ const initState = {
     token: localStorage.getItem("token") || "", // checks to see if the token is in localStorage if not ""
     sneakers:[],
     comments:[],
-    errMsg: ""
+    errMsg: "",
+    
 }
 
 const [userState, setUserState] = useState(initState)
-// console.log(userState.user._id)
-
 
 function signup(credentials: Inputs): void{
     axios.post("local/auth/signup", credentials)

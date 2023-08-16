@@ -23,6 +23,7 @@ const CommentDisplay = (props: CommentDisplayProps) => {
                 <Comment
                  {...comment}
                   key={comment._id}
+                  username={user.username}
                    commentId={comment._id}
                      sneakerId={sneakerId}
                      handleDelete={handleDelete}

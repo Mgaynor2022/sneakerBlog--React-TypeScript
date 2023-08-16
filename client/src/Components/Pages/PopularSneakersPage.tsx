@@ -60,7 +60,9 @@ const PopularSneakersPage = () => {
 
     return (
         <div id="sneakersPage">
-            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick= {backButton} size='3rem' cursor="pointer" />
+            <MdOutlineArrowBack id="backArrow"
+             className="fixed z-10 left-32 hover:bg-gray-300 rounded-full"
+              onClick= {backButton} size='3rem' cursor="pointer" />
             {filteredSneaker && filteredSneaker.map((trend) => (
                 <React.Fragment key={trend.id}>
                     <Card

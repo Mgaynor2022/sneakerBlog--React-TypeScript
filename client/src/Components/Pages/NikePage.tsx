@@ -61,7 +61,9 @@ const NikePage: React.FC = () => {
 
     return (
         <div id="nikePage">
-            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer'/>
+            <MdOutlineArrowBack id="backArrow"
+             className="fixed z-10 left-32 hover:bg-gray-300 rounded-full"
+              onClick={backButton} size='3rem' cursor='pointer'/>
             
             {filteredNike && filteredNike.map((sneaker) => (
                 <React.Fragment key={sneaker.brand}>

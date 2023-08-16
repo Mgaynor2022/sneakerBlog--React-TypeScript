@@ -48,22 +48,24 @@ const SidebarPage: React.FC = (): any => {
 
     return (
         <div id="KobeItems" className="mb-20">
-            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer' />
+            <MdOutlineArrowBack id="backArrow" className="fixed z-10 left-32 hover:bg-gray-300 rounded-full"
+             onClick={backButton} size='3rem' cursor='pointer'
+            />
 
             {kobeSneakers &&
               kobeSneakers.map((kobeSneaker) => (
-              <React.Fragment key={kobeSneaker._id}>
-                <Card
-                 {...kobeSneaker}
-                 image={kobeSneaker?.image.thumbnail}
-                 likeKobeSneaker = {likeKobeSneaker}
-                 dislikeKobeSneaker = {dislikeKobeSneaker}
-                 backButton = {backButton}
-                 commentButton= {commentButton}
-                 comments = {comments}
-                 commentsLength={commentsLength}
-                 {...commentInput}
-                 />
+                <React.Fragment key={kobeSneaker._id}>
+                  <Card
+                  {...kobeSneaker}
+                  image={kobeSneaker?.image.thumbnail}
+                  likeKobeSneaker = {likeKobeSneaker}
+                  dislikeKobeSneaker = {dislikeKobeSneaker}
+                  backButton = {backButton}
+                  commentButton= {commentButton}
+                  comments = {comments}
+                  commentsLength={commentsLength}
+                  {...commentInput}
+                  />
 
             {currentId === kobeSneaker._id && (
             <>
@@ -82,9 +84,7 @@ const SidebarPage: React.FC = (): any => {
               )}
             </>
           )}
-
-    
-                </React.Fragment>
+          </React.Fragment>
 
             ))}
             

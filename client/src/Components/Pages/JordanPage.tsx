@@ -51,11 +51,11 @@ const JordanPage: React.FC = () => {
         }
     }, [currentId])
 
-    console.log("Jordans", jordanSneakers)
-
     return (
-        <div id="jordanPage">
-            <MdOutlineArrowBack className="fixed z-10 left-32 hover:bg-gray-300 rounded-full" onClick={backButton} size='3rem' cursor='pointer'/>
+        <div id="jordanPage" className="mb-20">
+            <MdOutlineArrowBack id="backArrow"
+            className="fixed z-10 left-32 hover:bg-gray-300 rounded-full"
+             onClick={backButton} size='3rem' cursor='pointer'/>
             
             { jordanSneakers && jordanSneakers.map((sneaker) => (
                 <React.Fragment key={sneaker._id}>

@@ -24,7 +24,7 @@ const {token, logout } =  useContext(UserContext)
     <div id="navbar">
         {token && <Navbar logout={logout} />}
       </div>
-        <div id='container'>
+        <div id='container' className='min-h-screen flex flex-col'>
       <Routes>
           <Route path='/'
           element={token ? <Navigate to="/PublicPage"/> : <Auth  />}

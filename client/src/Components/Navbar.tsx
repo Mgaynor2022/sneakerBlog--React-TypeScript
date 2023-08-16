@@ -30,8 +30,8 @@ const Navbar = (props: { logout: any }) => {
                 </li>
 					</ul>
 				</nav>
-        <div id='mobile' className="">
-                <nav  className={'px-2 py-5  bg-black items-center' }>
+        <div id='mobile' >
+                <nav id='mobileNavbar'  className='px-2 py-5  bg-black items-center w-screen fixed z-20 mb-20' >
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center'>
                         <h1 className="font-bold tracking-wider text-white"> sneakerBlog</h1>

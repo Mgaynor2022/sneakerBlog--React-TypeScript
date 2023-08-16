@@ -8,14 +8,12 @@ const CommentForm = (props: CommentsForm) => {
         addComment,
         sneakerId,
         
-
     } = props
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         addComment(sneakerId, commentInput)
-        console.log("Added To Database.......", commentInput)
         
     }
 
@@ -27,7 +25,8 @@ const CommentForm = (props: CommentsForm) => {
         name="comment"
         placeholder="Type Your Comment"
         value={commentInput.comment}
-        onChange={handleTextArea} />
+        onChange={handleTextArea}
+        />
 
         <button className=" my-5 px-5 py-2 bg-red-500 text-white font-semibold hover:bg-gray-700">Post Comment</button>
     </form>

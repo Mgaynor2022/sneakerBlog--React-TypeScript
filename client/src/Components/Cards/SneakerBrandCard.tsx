@@ -10,7 +10,7 @@ const SneakerBrandCard = (props: BrandLink) => {
         <div className="wrapper">
         <div className="card ">
             <div className="poster">
-                <img src={image} className="" alt="Location Unknown"/>
+                <img loading="lazy" src={image} className="" alt="Location Unknown"/>
             </div>
             <div className="details  text-center">
                 <h1> {header}</h1>
