@@ -19,7 +19,7 @@ const Comment = (props:Comments) => {
     const formattedTime = moment(timestamp).fromNow()
     const firstLetterOfUserName: string = username.slice(0,1)
     const date = new Date(timestamp)
-    let dateMDY = `${date.getMonth()}-${date.getDate()-  + 1}-${date.getFullYear()}`
+    // let dateMDY = `${date.getMonth()}-${date.getDate()-  + 1}-${date.getFullYear()}`
 
     
     return (
