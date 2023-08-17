@@ -68,7 +68,7 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         userAxios.get(url)
         .then(res => setComments(res.data))
         .catch(err => console.log(err))
-        
+
     }
 
     const handleChange = (e: React.ChangeEvent <HTMLInputElement>) => {
@@ -99,6 +99,7 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         .then(res => setComments(prev => [...prev, res.data]))
         .catch(err => console.log(err))
         resetForm()
+        // getComments(sneakerId)
     }
 
 

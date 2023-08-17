@@ -5,7 +5,7 @@ import { TiDelete } from 'react-icons/ti'
 const Comment = (props:Comments) => {
 
     const {
-        username,
+       
         timestamp,
         comment,
         handleDelete,
@@ -18,11 +18,10 @@ const Comment = (props:Comments) => {
 
     const formattedTime = moment(timestamp).fromNow()
     // useMemo to memerize the caculation ?
-    const firstLetterOfUserName: string = username.slice(0,1)
+    const firstLetterOfUserName = user.username.charAt(0)
     // const date = new Date(timestamp)
     // let dateMDY = `${date.getMonth()}-${date.getDate()-  + 1}-${date.getFullYear()}`
 
-    
     return (
         <>
             {user._id !== userId ? 

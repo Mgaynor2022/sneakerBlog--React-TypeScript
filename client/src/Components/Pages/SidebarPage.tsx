@@ -44,8 +44,9 @@ const SidebarPage: React.FC = (): any => {
           
         }
     }, [currentId])
-    console.log(comments)
 
+
+    console.log(comments)
 
     return (
         <div id="KobeItems" className="mb-20">
@@ -81,6 +82,7 @@ const SidebarPage: React.FC = (): any => {
                  sneakerId={kobeSneaker._id}
                  handleDelete={handleDelete}
                  user = {user}
+                 comments = {comments}
                   />
               )}
             </>
