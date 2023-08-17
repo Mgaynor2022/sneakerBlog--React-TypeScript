@@ -1,5 +1,6 @@
 import About from './About'
 import "../Css/LetteringStairs.css"
+import { memo } from 'react'
 
 
 
@@ -34,5 +35,5 @@ const LetteringStairs = () => {
         
     )
 }
-
-export default LetteringStairs
+// Memorizes this component so it doest rerender 
+export default memo(LetteringStairs)

@@ -171,6 +171,7 @@ export interface Comments {
     commentId: string
     userId: string
     user: any
+    postBy: string
 }
 export interface CommentsForm {
     commentInput: {

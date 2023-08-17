@@ -44,6 +44,7 @@ const SidebarPage: React.FC = (): any => {
           
         }
     }, [currentId])
+    console.log(comments)
 
 
     return (

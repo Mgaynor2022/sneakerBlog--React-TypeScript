@@ -83,7 +83,7 @@ function login(credentials: Inputs): void{
     // .catch(err => console.log(err))
     .catch((err) => handleAuthErr(err.response.data.errMsg));
 }
-// Gotta fix the error 
+
 function logout() {
 localStorage.removeItem("token");
 localStorage.removeItem("user");
@@ -93,15 +93,6 @@ setUserState((prevState) => ({
     token: ""
 }));
 }
-
-// function logout(){
-//     localStorage.removeItem("token")
-//     localStorage.removeItem("user")
-//     setUserState({
-//         user:{},
-//         token:""
-//     });
-// }
 
 function handleAuthErr(errMsg: string){
     setUserState(prevState => ({
