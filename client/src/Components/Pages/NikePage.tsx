@@ -97,7 +97,8 @@ const NikePage: React.FC = () => {
                                 user={user}
                                 handleDelete={handleDelete}
                                 sneakerId={sneaker._id}
-                                 />
+                                comments={[]}
+                                />
                             )}
                           
                         </>

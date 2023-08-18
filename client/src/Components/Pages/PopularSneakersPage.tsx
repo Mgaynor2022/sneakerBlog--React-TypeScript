@@ -95,7 +95,8 @@ const PopularSneakersPage = () => {
                                 user={user}
                                 handleDelete={handleDelete}
                                 sneakerId={trend._id}
-                                 />
+                                comments={[]}
+                                />
                             )}
                           
                         </>
