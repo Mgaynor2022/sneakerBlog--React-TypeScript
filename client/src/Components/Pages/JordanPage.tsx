@@ -85,10 +85,11 @@ const JordanPage: React.FC = () => {
                              />
                             {showComment && (
                                 <CommentDisplay
-                                user={user}
-                                handleDelete={handleDelete}
-                                sneakerId={sneaker._id}
-                                 />
+                                    user={user}
+                                    handleDelete={handleDelete}
+                                    sneakerId={sneaker._id} 
+                                    comments={[]}
+                                />
                             )}
                           
                         </>
