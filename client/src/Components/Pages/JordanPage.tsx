@@ -26,7 +26,6 @@ const JordanPage: React.FC = () => {
      } = useContext<SneakerContextType>(SneakerContext)
 
      const {
-        comments,
         commentButton,
         commentsLength,
         currentId, 
