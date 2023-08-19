@@ -26,6 +26,7 @@ const JordanPage: React.FC = () => {
      } = useContext<SneakerContextType>(SneakerContext)
 
      const {
+        comments,
         commentButton,
         commentsLength,
         currentId, 
@@ -85,11 +86,11 @@ const JordanPage: React.FC = () => {
                              />
                             {showComment && (
                                 <CommentDisplay
-                                    user={user}
-                                    handleDelete={handleDelete}
-                                    sneakerId={sneaker._id} 
-                                    comments={[]}
-                                />
+                                user={user}
+                                handleDelete={handleDelete}
+                                sneakerId={sneaker._id}
+                               
+                                 />
                             )}
                           
                         </>

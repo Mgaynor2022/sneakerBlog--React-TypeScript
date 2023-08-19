@@ -15,6 +15,12 @@ const CommentSchema = new Schema ({
       ref: "User",
       required: true,
     }, 
+    postBy :{
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+
+    },
     sneakerId: {
         type: Schema.Types.ObjectId,
         ref: "KobeSneakers",

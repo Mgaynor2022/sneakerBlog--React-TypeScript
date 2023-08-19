@@ -99,7 +99,7 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         .then(res => setComments(prev => [...prev, res.data]))
         .catch(err => console.log(err))
         resetForm()
-        // getComments(sneakerId)
+        getComments(sneakerId)
     }
 
 

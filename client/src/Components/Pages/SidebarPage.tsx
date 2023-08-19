@@ -82,7 +82,7 @@ const SidebarPage: React.FC = (): any => {
                  sneakerId={kobeSneaker._id}
                  handleDelete={handleDelete}
                  user = {user}
-                 comments = {comments}
+                 
                   />
               )}
             </>

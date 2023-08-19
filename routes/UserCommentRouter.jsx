@@ -27,6 +27,9 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
  async (req, res, next) => {
     try {
         const allKobeComments = await UserComments.find({ sneakerId: req.params.sneakerId})
+        .populate({
+            path: "user"
+        })
         return res.status(200).send(allKobeComments)
     }
         catch (err){
@@ -35,19 +38,6 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
         }
 })
 
-// userCommentsRouter.get("/", async (req, res, next) => {
-//     try {
-//         const allComments = await UserComments.find({ comments: req.body.comments})
-//         return res.status(200).send(allComments)
-//     }
-//         catch (err){
-//             res.status(500)
-//             return next(err)
-//         }
-// })
-
-
-
 userCommentsRouter.post('/:sneakerId',
 expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
  async (req, res, next) => {
@@ -55,11 +45,15 @@ expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),
         const comment = {
             comment: req.body.comment,
             sneakerId: req.params.sneakerId,
+            postBy: req.auth._id,
             user: req.auth._id
         }
         console.log(comment)
         const newComment = new UserComments(comment)
         const savedComment = await newComment.save();
+        savedComment.populate({
+            path: "user"
+        })
         console.log("Saved Comment", savedComment)
         return res.status(201).send(savedComment)
       }

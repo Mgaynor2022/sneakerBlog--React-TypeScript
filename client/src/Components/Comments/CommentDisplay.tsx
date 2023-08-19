@@ -1,11 +1,21 @@
 
-import {  CommentDisplayProps} from "../../Types/Types";
+import { useContext, useEffect } from "react";
+import {  CommentContextType, CommentDisplayProps} from "../../Types/Types";
 import Comment from "./Comment";
+import { CommentsContext } from "../../Context/CommentsProvider";
 
 
 const CommentDisplay = (props: CommentDisplayProps) => {
 
-    const {sneakerId, handleDelete, user, comments} = props
+    const {sneakerId, handleDelete, user} = props
+
+    const {
+        comments,
+      
+        
+      } = useContext<CommentContextType>(CommentsContext)
+      console.log(comments)
+
 
     return (
         <>
@@ -19,6 +29,7 @@ const CommentDisplay = (props: CommentDisplayProps) => {
                      handleDelete={handleDelete}
                      user={user}
                      userId= {comment.postBy}
+                     username={comment.user.username}
                       />
              ))}
 

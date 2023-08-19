@@ -162,6 +162,7 @@ export type CommentContextType = {
 
 export interface Comments {
     _id: string;
+    username:string
     comments: Array<Comments>
     timestamp: string;
     sneakerId: string;
@@ -187,6 +188,5 @@ export interface CommentDisplayProps {
     user: any
     sneakerId: string;
     handleDelete: (commentId: string) => void,
-    // just added
-    comments: Array<Comments>
+   
 }
