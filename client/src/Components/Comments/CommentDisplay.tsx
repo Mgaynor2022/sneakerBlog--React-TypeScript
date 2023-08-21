@@ -11,11 +11,8 @@ const CommentDisplay = (props: CommentDisplayProps) => {
 
     const {
         comments,
-      
-        
+    
       } = useContext<CommentContextType>(CommentsContext)
-      console.log(comments)
-
 
     return (
         <>

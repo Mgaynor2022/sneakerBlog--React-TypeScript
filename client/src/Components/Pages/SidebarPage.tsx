@@ -41,12 +41,10 @@ const SidebarPage: React.FC = (): any => {
           setShowComment(true);
         } else {
           setShowComment(false)
-          
+          console.log(currentId)
         }
     }, [currentId])
 
-
-    console.log(comments)
 
     return (
         <div id="KobeItems" className="mb-20">

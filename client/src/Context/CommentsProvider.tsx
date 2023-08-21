@@ -97,9 +97,11 @@ const CommentsProvider = ({children} : ContextProviderProps) => {
         const url: string = `/local/api/userComment/${sneakerId}`
         userAxios.post(url, info)
         .then(res => setComments(prev => [...prev, res.data]))
+        // added gets the new set of comments after the POST request
+        .then(() => getComments(sneakerId))
         .catch(err => console.log(err))
         resetForm()
-        getComments(sneakerId)
+        
     }
 
 

@@ -13,8 +13,9 @@ const Comment = (props:Comments) => {
         commentId,
         user,
         userId,
-        
+    
     } = props
+    
 
 
     const formattedTime = moment(timestamp).fromNow()
