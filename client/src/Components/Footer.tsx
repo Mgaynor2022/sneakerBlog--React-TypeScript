@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className=" col-start-3 col-end-4 p-2 ">
                     <h1 className="mb-5 font-bold  md:text-2xl ">Company</h1>
-                    <ul className="flex flex-col justify-between  ">
+                    <ul className="flex flex-col justify-between   ">
                         <li className="mb-2 text-sm ">
                             Contact Us 
                         </li>
@@ -32,11 +32,11 @@ const Footer: React.FC = () => {
                 </div>
                 <div id="icons" className="col-start-1 col-end-4 sm:col-start-4 sm:col-end-5 row-start-2 sm:row-start-1 p-2 items-center">
                     {/* <h1 className="mb-5 font-bold">Social Media</h1> */}
-                    <ul className="flex sm:flex-row items-center justify-evenly mt-5 ">
-                        <GrFacebook size={30}  /> 
-                        <BsDiscord size={30} />
-                        <BsTwitter size={30} />
-                        <BsInstagram size={30} />
+                    <ul className="flex sm:flex-row items-center justify-evenly mt-5  cursor-pointer ">
+                        <GrFacebook className="hover:text-red-500 transition delay-200" size={30}  /> 
+                        <BsDiscord className="hover:text-red-500 transition delay-200" size={30} />
+                        <BsTwitter className="hover:text-red-500 transition delay-200" size={30} />
+                        <BsInstagram className="hover:text-red-500 transition delay-200" size={30} />
 
                     </ul>
                 </div>

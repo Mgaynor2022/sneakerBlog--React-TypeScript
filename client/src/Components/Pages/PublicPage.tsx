@@ -16,7 +16,7 @@ const PublicPage: React.FC = () => {
   useEffect(() => {
       getPublicSneakers()
       getPopularSneakers()
-      
+    
   }, [])
 
       return (

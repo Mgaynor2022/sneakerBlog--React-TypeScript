@@ -11,7 +11,6 @@ const ContentDisplay: React.FC = () => {
     const handleClick = (value: string) => {
         setClickValue(value)
     }
-    console.log(clickValue)
     
     return (
         <>

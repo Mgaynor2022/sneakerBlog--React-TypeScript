@@ -71,6 +71,13 @@
   grid-row-end: 4;
  place-items: center;
 }
+#loader{
+  
+ position: absolute;
+ top:50%;
+ left:80%;
+}
+
 #authBtn{
   position: relative;
   border:none;
@@ -213,6 +220,7 @@ footer {
 @media only screen and (max-width: 767px) {
   .container {
     display: grid;
+    height: 100dvh;
     position: relative;
     text-align: center;
     grid-template-columns: 1fr;
@@ -239,6 +247,12 @@ footer {
   #title h1 {
     padding-left: 0;
   }
+  #loader{
+    margin-top: 200px;
+    /* position: absolute;
+    top:50%; */
+
+   }
 
   #auth{
     /* grid-area:main; */

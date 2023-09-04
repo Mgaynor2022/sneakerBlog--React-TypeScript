@@ -21,7 +21,8 @@ const ContextDefault: UserContextType = {
     likeKobeSneaker: () => { },
     dislikeKobeSneaker: () => { },
     backButton: () => { },
-    user: ""
+    user: "",
+   
 }
 
 type ContextProviderProps = {
@@ -56,6 +57,8 @@ const initState = {
 }
 
 const [userState, setUserState] = useState(initState)
+
+const [ isLoading, setIsLoading] = useState(Boolean)
 
 function signup(credentials: Inputs): void{
     axios.post("local/auth/signup", credentials)

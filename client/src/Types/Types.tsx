@@ -117,6 +117,8 @@ export type  UserContextType = {
     dislikeKobeSneaker: (sneakerId: string) => void
     backButton: () => void
     
+  
+    
 }
 
 export type SneakerContextType = {
