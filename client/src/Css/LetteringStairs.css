@@ -1,34 +1,34 @@
 .container p {
-    font-size: 60px;
-    font-family: sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    height: 1em;
-    overflow: hidden;
-    position: relative;
-    left: -2em;
+  font-size: 60px;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  height: 1em;
+  overflow: hidden;
+  position: relative;
+  left: -2em;
 }
 .container p:nth-child(odd) {
-    transform: skewY(-30deg) skewX(45deg) scaleY(1.3333);
+  transform: skewY(-30deg) skewX(45deg) scaleY(1.3333);
 }
 .container p:nth-child(even) {
-    transform: skewY(-30deg) scaleY(1.3333);
+  transform: skewY(-30deg) scaleY(1.3333);
 }
 .container p:nth-child(2) {
-    margin-left: 1.3em;
+  margin-left: 1.3em;
 }
 .container p:nth-child(3) {
-    margin-left: 2.6em;
+  margin-left: 2.6em;
 }
 .container p span {
-    display: block;
-    text-align: center;
-    line-height: 1em;
-    animation: lettering 3s infinite ease-in-out alternate
+  display: block;
+  text-align: center;
+  line-height: 1em;
+  animation: lettering 3s infinite ease-in-out alternate;
 }
 @keyframes lettering {
-    to {
-        transform: translateY(-100%);
-    }
+  to {
+    transform: translateY(-100%);
+  }
 }

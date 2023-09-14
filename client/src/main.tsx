@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           </SneakerProvider>
         </CommentsProvider>
       </UserProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
   </BrowserRouter>
 )
