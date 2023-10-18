@@ -1,6 +1,7 @@
 import { AuthProps } from "../../Types/Types";
 
 const AuthForm = (props: AuthProps) => {
+ 
   return (
     <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0">
       <div
