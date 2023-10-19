@@ -52,6 +52,7 @@ const AuthForm = (props: AuthProps) => {
 
           <div className="relative">
             <button
+              name="authBtn"
               id="authBtn"
               className="w-full text-white inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center rounded-lg transition duration-200 bg-black"
             >
